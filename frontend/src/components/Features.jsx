@@ -9,38 +9,38 @@ const FEATURES_DATA = [
   {
     id: 1,
     icon: '📖',
-    title: 'Read Beautiful Poems',
-    description: 'Discover curated poetry collections with stunning typography and book-like reading experience.',
+    title: 'Interactive 3D Reader',
+    description: 'Flip through a realistic page-turning book interface designed to showcase my journal and poems.',
   },
   {
     id: 2,
     icon: '🎨',
-    title: '5 Premium Themes',
-    description: 'Choose from Dark, Zen, Cyberpunk, Vintage, and Aurora themes with seamless theme switching.',
+    title: '5 Immersive Themes',
+    description: 'Switch between Dark, Zen, Cyberpunk, Vintage, and Aurora themes to match the emotional tone of the verses.',
   },
   {
     id: 3,
     icon: '✍️',
-    title: 'Share Your Verses',
-    description: 'Publish your poetry and reach a community of enthusiastic readers and fellow poets.',
+    title: 'Personal Margins Pen',
+    description: 'Highlight your favorite verses and write your thoughts directly in the margins as custom notes.',
   },
   {
     id: 4,
-    icon: '💬',
-    title: 'Engage & Connect',
-    description: 'Rate poems, leave feedback, and connect with poets through a vibrant community.',
+    icon: '📤',
+    title: 'Download & Share Cards',
+    description: 'Instantly export any page as a beautiful customized JPEG image or clean PDF layout to share with friends.',
   },
   {
     id: 5,
-    icon: '📧',
-    title: 'Email Notifications',
-    description: 'Stay updated with new poems and receive curated recommendations in your inbox.',
+    icon: '🔒',
+    title: 'Private Drafts Editor',
+    description: 'A secure admin dashboard where I can write, format, preview, and save my poems in real time.',
   },
   {
     id: 6,
-    icon: '📥',
-    title: 'Export as PDF/JPEG',
-    description: 'Download your favorite poems as beautifully formatted PDF or JPEG files.',
+    icon: '📧',
+    title: 'Direct Reader Letters',
+    description: 'Subscribe with your email to receive automated notifications as soon as I post new writings.',
   },
 ];
 
@@ -49,8 +49,10 @@ export default function Features() {
   const featureCardsRef = useRef([]);
 
   useEffect(() => {
+    const cards = featureCardsRef.current.filter(Boolean);
+
     // Animate feature cards on scroll
-    featureCardsRef.current.forEach((card, index) => {
+    cards.forEach((card, index) => {
       gsap.fromTo(
         card,
         {
@@ -71,29 +73,39 @@ export default function Features() {
           },
         }
       );
+    });
 
-      // Hover animation
-      card.addEventListener('mouseenter', () => {
+    // Hover animation handlers
+    const enterHandlers = cards.map(card => {
+      const handler = () => {
         gsap.to(card, {
           y: -10,
           duration: 0.3,
           overwrite: 'auto',
         });
-      });
+      };
+      card.addEventListener('mouseenter', handler);
+      return handler;
+    });
 
-      card.addEventListener('mouseleave', () => {
+    const leaveHandlers = cards.map(card => {
+      const handler = () => {
         gsap.to(card, {
           y: 0,
           duration: 0.3,
           overwrite: 'auto',
         });
-      });
+      };
+      card.addEventListener('mouseleave', handler);
+      return handler;
     });
 
     return () => {
-      featureCardsRef.current.forEach((card) => {
-        card.removeEventListener('mouseenter', () => {});
-        card.removeEventListener('mouseleave', () => {});
+      cards.forEach((card, index) => {
+        if (card) {
+          card.removeEventListener('mouseenter', enterHandlers[index]);
+          card.removeEventListener('mouseleave', leaveHandlers[index]);
+        }
       });
     };
   }, []);

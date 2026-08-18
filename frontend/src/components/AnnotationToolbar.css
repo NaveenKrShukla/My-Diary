@@ -1,0 +1,275 @@
+.annotation-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: 12px;
+  background: rgba(26, 26, 26, 0.8) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  width: auto;
+}
+
+.toolbar-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.toolbar-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 4px;
+  margin-bottom: 2px;
+}
+
+.tool-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tool-btn:hover {
+  background-color: rgba(139, 92, 246, 0.1);
+  border-color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.tool-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Colors section */
+.colors-section {
+  animation: fadeIn 0.3s ease;
+}
+
+.color-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.color-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.color-btn:hover {
+  transform: scale(1.15);
+}
+
+.color-btn.active {
+  border-color: var(--color-text-primary);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Annotation highlighted text classes */
+.theme-highlight {
+  background-color: var(--highlight-color, rgba(253, 224, 71, 0.4));
+  border-radius: 3px;
+  padding: 1px 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.theme-highlight.eraser-hover {
+  background-color: rgba(239, 68, 68, 0.3) !important;
+  text-decoration: line-through;
+}
+
+/* Annotation notes styling */
+.line-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.poem-line {
+  transition: background-color var(--transition-fast);
+  padding: 2px var(--spacing-md);
+  border-radius: 4px;
+  cursor: default;
+  display: inline-block;
+}
+
+.line-wrapper.can-add-note:hover .poem-line {
+  background-color: rgba(139, 92, 246, 0.08);
+  cursor: cell;
+}
+
+.note-pin {
+  position: absolute;
+  left: -24px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.note-pin:hover {
+  transform: scale(1.2);
+}
+
+.note-pin.eraser-hover {
+  filter: grayscale(1) contrast(1.5);
+  animation: shake 0.3s infinite;
+}
+
+.note-bubble {
+  position: absolute;
+  left: calc(100% + 15px);
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-surface);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  width: 180px;
+  font-family: Inter, sans-serif;
+  text-align: left;
+  line-height: 1.4;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.note-bubble::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent var(--color-surface) transparent transparent;
+}
+
+.note-editor-box {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 60;
+  width: 220px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: slideInDown 0.15s ease-out;
+}
+
+.note-input {
+  font-size: 0.8rem;
+  padding: var(--spacing-sm);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+}
+
+.note-editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.note-btn {
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.note-btn-save {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.note-btn-cancel {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(0px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  72% { transform: translate(2px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(2px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media (max-width: 768px) {
+  .annotation-toolbar {
+    flex-direction: row;
+    position: fixed;
+    bottom: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    justify-content: space-around;
+    padding: var(--spacing-sm);
+  }
+  .toolbar-section {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  .toolbar-title {
+    display: none;
+  }
+  .tool-buttons {
+    flex-direction: row;
+    gap: 4px;
+  }
+  .tool-btn {
+    padding: var(--spacing-sm);
+  }
+  .note-bubble {
+    left: auto;
+    right: 0;
+    top: -65px;
+    transform: none;
+    width: 150px;
+  }
+  .note-bubble::before {
+    display: none;
+  }
+}

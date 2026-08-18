@@ -1,4 +1,8 @@
 :root {
+  /* Fonts defaults */
+  --font-family-headings: 'Sahitya', 'Lora', Georgia, serif;
+  --font-family-body: 'Lora', Georgia, serif;
+
   /* Light theme colors */
   --color-primary: #8b5cf6;
   --color-secondary: #3b82f6;
@@ -20,6 +24,17 @@
   --transition-fast: 150ms ease-in-out;
   --transition-base: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
+}
+
+/* Light theme */
+html.theme-light {
+  --color-primary: #7c3aed;
+  --color-secondary: #4f46e5;
+  --color-accent: #d97706;
+  --color-background: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-text-primary: #1a1f36;
+  --color-text-secondary: #565d73;
 }
 
 /* Dark theme (default) */
@@ -89,7 +104,7 @@ html {
 }
 
 body {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-family-body), Inter, system-ui, -apple-system, sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   line-height: 1.6;
@@ -125,7 +140,7 @@ body {
 
 /* Typography */
 h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -133,7 +148,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.3;
@@ -141,27 +156,27 @@ h2 {
 }
 
 h3 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 1.875rem;
   font-weight: 600;
   line-height: 1.4;
 }
 
 h4 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.5;
 }
 
 h5 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 1.25rem;
   font-weight: 600;
 }
 
 h6 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-family-headings), 'Playfair Display', Georgia, serif;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;

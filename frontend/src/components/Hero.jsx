@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Hero.css';
@@ -13,6 +14,7 @@ export default function Hero() {
   const cta1Ref = useRef(null);
   const cta2Ref = useRef(null);
   const floatingBoxesRef = useRef([]);
+  floatingBoxesRef.current = [];
 
   useEffect(() => {
     // Animate title with zoom-in effect
@@ -67,6 +69,7 @@ export default function Hero() {
 
     // Animate floating boxes
     floatingBoxesRef.current.forEach((box, index) => {
+      if (!box) return;
       gsap.fromTo(
         box,
         {
@@ -92,16 +95,21 @@ export default function Hero() {
       });
     });
 
-    // Parallax effect on scroll
-    gsap.to(titleRef.current, {
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top center',
-        end: 'bottom center',
-        scrub: 0.5,
-      },
-      y: 100,
-    });
+    // Parallax effect on scroll - translate the entire content block together to prevent collisions
+    const heroContent = heroRef.current?.querySelector('.hero-content');
+    if (heroContent) {
+      gsap.to(heroContent, {
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.5,
+        },
+        y: 120,
+        opacity: 0,
+        ease: 'none',
+      });
+    }
   }, []);
 
   return (
@@ -117,23 +125,23 @@ export default function Hero() {
         {/* Main Content */}
         <div className="hero-content">
           <h1 ref={titleRef} className="hero-title gradient-text">
-            My Diary by NaKSh
+            NaKSh's Diary
           </h1>
 
           <p ref={subtitleRef} className="hero-subtitle">
-            A premium platform for poets and poetry enthusiasts. Share your verses, discover new voices, and immerse yourself in the art of poetry with stunning themes and seamless reading experience.
+            Welcome to my private collection of verses, thoughts, and reflections. Explore my writing in an interactive 3D reader, customize themes to match your mood, highlight your favorite lines, and export beautiful poetry cards to share.
           </p>
 
           {/* CTA Buttons */}
           <div className="hero-cta">
-            <button ref={cta1Ref} className="btn btn-primary" onClick={() => window.location.href = '#reader'}>
+            <Link ref={cta1Ref} to="/read" className="btn btn-primary">
               <span>📖</span>
-              Start Reading
-            </button>
-            <button ref={cta2Ref} className="btn btn-secondary" onClick={() => window.location.href = '#admin'}>
-              <span>✨</span>
-              Share Poetry
-            </button>
+              Open Diary
+            </Link>
+            <Link ref={cta2Ref} to="/admin" className="btn btn-secondary">
+              <span>🔒</span>
+              Admin Gate
+            </Link>
           </div>
         </div>
 
@@ -141,29 +149,29 @@ export default function Hero() {
         <div className="floating-cards">
           <div
             className="float-card"
-            ref={(el) => floatingBoxesRef.current.push(el)}
+            ref={(el) => { if (el) floatingBoxesRef.current.push(el); }}
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <div className="card-icon">📚</div>
-            <p className="card-text">1000+ Poems</p>
+            <div className="card-icon">✍️</div>
+            <p className="card-text">My Writings</p>
           </div>
 
           <div
             className="float-card"
-            ref={(el) => floatingBoxesRef.current.push(el)}
+            ref={(el) => { if (el) floatingBoxesRef.current.push(el); }}
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <div className="card-icon">🎨</div>
-            <p className="card-text">5 Themes</p>
+            <p className="card-text">Custom Themes</p>
           </div>
 
           <div
             className="float-card"
-            ref={(el) => floatingBoxesRef.current.push(el)}
+            ref={(el) => { if (el) floatingBoxesRef.current.push(el); }}
             onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <div className="card-icon">💬</div>
-            <p className="card-text">Community</p>
+            <div className="card-icon">📤</div>
+            <p className="card-text">Share Cards</p>
           </div>
         </div>
       </div>

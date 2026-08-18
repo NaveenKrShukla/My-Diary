@@ -1,0 +1,276 @@
+.interactions-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+}
+
+.interactions-card {
+  width: 100%;
+  max-width: 820px;
+  background: rgba(26, 26, 26, 0.9) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.interactions-card::-webkit-scrollbar {
+  width: 5px;
+}
+.interactions-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.interactions-card::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.interactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: var(--spacing-md);
+}
+
+.interactions-header h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+.interactions-poem-title {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
+
+.close-interactions-btn {
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 1.25rem;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.close-interactions-btn:hover {
+  color: var(--color-text-primary);
+  transform: rotate(90deg);
+}
+
+/* Stats Row */
+.interactions-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 5px;
+}
+
+/* Two Column Layout */
+.interactions-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-xl);
+}
+
+.panel-subheading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--spacing-sm);
+}
+
+/* Left Panel - Form */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.stars-input {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: 5px;
+}
+
+.star-btn {
+  background: transparent;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 1;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+.star-btn.filled {
+  color: var(--color-accent);
+  text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+.submit-review-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+/* Right Panel - Comments */
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px;
+}
+
+.comments-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loader.small {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+}
+
+.no-comments {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.comments-list::-webkit-scrollbar {
+  width: 4px;
+}
+.comments-list::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 2px;
+}
+
+.comment-card {
+  padding: var(--spacing-md);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-user {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.comment-avatar {
+  font-size: 1.25rem;
+}
+
+.comment-username {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.comment-rating {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+}
+
+.comment-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.comment-date {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  align-self: flex-end;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .interactions-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .interactions-card {
+    padding: var(--spacing-lg);
+  }
+}
