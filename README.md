@@ -15,121 +15,141 @@ This folder contains comprehensive planning and setup documentation for building
 ### 📄 Main Documents (Read in this order)
 
 #### 1. **PROJECT_PLAN.md** - The Master Guide
-   - **What:** 10-step implementation roadmap
-   - **Purpose:** Complete project breakdown and timeline
-   - **Read if:** You want to understand the full scope and timeline
-   - **Key Info:**
-     - 10 detailed phases (27-38 days total)
-     - Success metrics and deliverables
-     - Phase dependencies
-     - Resource requirements
+
+- **What:** 10-step implementation roadmap
+- **Purpose:** Complete project breakdown and timeline
+- **Read if:** You want to understand the full scope and timeline
+- **Key Info:**
+  - 10 detailed phases (27-38 days total)
+  - Success metrics and deliverables
+  - Phase dependencies
+  - Resource requirements
 
 #### 2. **TECH_STACK.md** - Technology Selection
-   - **What:** Complete tech stack recommendations
-   - **Purpose:** Understand tools, libraries, and platforms
-   - **Read if:** You want to know what technologies to use
-   - **Key Info:**
-     - Frontend stack (React, GSAP, Tailwind)
-     - Backend stack (Node.js, Express, MongoDB)
-     - Database design with all collections
-     - Deployment recommendations
-     - Performance targets
+
+- **What:** Complete tech stack recommendations
+- **Purpose:** Understand tools, libraries, and platforms
+- **Read if:** You want to know what technologies to use
+- **Key Info:**
+  - Frontend stack (React, GSAP, Tailwind)
+  - Backend stack (Node.js, Express, MongoDB)
+  - Database design with all collections
+  - Deployment recommendations
+  - Performance targets
 
 #### 3. **FEATURE_CHECKLIST.md** - Complete Feature List
-   - **What:** 200+ features organized by category
-   - **Purpose:** Track implementation progress
-   - **Read if:** You need to know what to build
-   - **Key Info:**
-     - Core features grouped by module
-     - Nice-to-have bonus features
-     - Testing checklist
-     - Deployment tasks
-     - Success metrics
+
+- **What:** 200+ features organized by category
+- **Purpose:** Track implementation progress
+- **Read if:** You need to know what to build
+- **Key Info:**
+  - Core features grouped by module
+  - Nice-to-have bonus features
+  - Testing checklist
+  - Deployment tasks
+  - Success metrics
 
 #### 4. **QUICK_REFERENCE.md** - Fast Lookup Guide
-   - **What:** Quick reference for common tasks
-   - **Purpose:** Fast lookup during development
-   - **Read if:** You need quick answers
-   - **Key Info:**
-     - 10-step timeline summary
-     - API endpoint reference
-     - Design system specifications
-     - Common pitfalls to avoid
-     - Performance targets
-     - File structure template
+
+- **What:** Quick reference for common tasks
+- **Purpose:** Fast lookup during development
+- **Read if:** You need quick answers
+- **Key Info:**
+  - 10-step timeline summary
+  - API endpoint reference
+  - Design system specifications
+  - Common pitfalls to avoid
+  - Performance targets
+  - File structure template
 
 #### 5. **STEP_1_SETUP_GUIDE.md** - Getting Started
-   - **What:** Detailed Step 1 implementation guide
-   - **Purpose:** Set up development environment
-   - **Read if:** You're ready to start building
-   - **Key Info:**
-     - Prerequisites and installations
-     - GitHub repository setup
-     - MongoDB Atlas configuration
-     - Frontend and backend initialization
-     - Environment configuration
-     - Troubleshooting guide
+
+- **What:** Detailed Step 1 implementation guide
+- **Purpose:** Set up development environment
+- **Read if:** You're ready to start building
+- **Key Info:**
+  - Prerequisites and installations
+  - GitHub repository setup
+  - MongoDB Atlas configuration
+  - Frontend and backend initialization
+  - Environment configuration
+  - Troubleshooting guide
 
 ---
 
 ## 🎯 Quick Navigation by Role
 
 ### For Project Managers
+
 **Start here:**
+
 1. Read PROJECT_PLAN.md (overview for timeline planning)
 2. Check FEATURE_CHECKLIST.md (for progress tracking)
 3. Review QUICK_REFERENCE.md (for milestone tracking)
 
 **Questions answered:**
+
 - ✅ How long will this take? (27-38 days)
 - ✅ What are the major milestones? (10 steps)
 - ✅ What features need to be built? (200+ items)
 - ✅ How do we track progress? (Feature checklist & milestones)
 
 ### For Frontend Developers
+
 **Start here:**
+
 1. Read TECH_STACK.md (Frontend section)
 2. Review PROJECT_PLAN.md (Steps 3-5)
 3. Check FEATURE_CHECKLIST.md (Reader Experience section)
 
 **Questions answered:**
+
 - ✅ What frontend framework? (React 18 + Vite)
 - ✅ What animation library? (GSAP + Framer Motion)
 - ✅ What styling? (Tailwind CSS)
 - ✅ What UI components to build? (250+ features listed)
 
 ### For Backend Developers
+
 **Start here:**
+
 1. Read TECH_STACK.md (Backend & Database sections)
 2. Review PROJECT_PLAN.md (Steps 2, 7, 9)
 3. Check QUICK_REFERENCE.md (API endpoints)
 
 **Questions answered:**
+
 - ✅ What backend framework? (Express.js)
 - ✅ What database? (MongoDB)
 - ✅ What APIs to build? (15+ endpoints documented)
 - ✅ Email system? (Nodemailer + Bull jobs)
 
 ### For DevOps/Deployment
+
 **Start here:**
+
 1. Read TECH_STACK.md (Deployment section)
 2. Review STEP_1_SETUP_GUIDE.md (Environment setup)
 3. Check PROJECT_PLAN.md (Step 10: Deployment)
 
 **Questions answered:**
+
 - ✅ What platforms? (Vercel, Railway, Heroku, AWS)
 - ✅ Database hosting? (MongoDB Atlas)
 - ✅ File storage? (AWS S3, Firebase, etc.)
 - ✅ Email service? (SendGrid, AWS SES, Gmail)
 
 ### For Solo Developers
+
 **Start here:**
+
 1. Read PROJECT_PLAN.md (complete overview)
 2. Follow STEP_1_SETUP_GUIDE.md (setup environment)
 3. Use QUICK_REFERENCE.md (quick lookups during coding)
 4. Track progress in FEATURE_CHECKLIST.md
 
 **Questions answered:**
+
 - ✅ Where do I start? (Step 1: Setup)
 - ✅ What's the order? (Follow 10 steps)
 - ✅ How long per step? (See timeline)
@@ -179,6 +199,7 @@ Week 4-5 (Days 22-38)
 ## 🚀 Getting Started (Right Now!)
 
 ### Option A: I want to start coding immediately
+
 1. Open `STEP_1_SETUP_GUIDE.md`
 2. Follow installation steps
 3. Initialize GitHub repo and local environment
@@ -190,6 +211,7 @@ Week 4-5 (Days 22-38)
 **What you'll have:** Working dev environment ready for Step 2
 
 ### Option B: I want to understand everything first
+
 1. Read `PROJECT_PLAN.md` completely
 2. Review `TECH_STACK.md` sections relevant to you
 3. Skim `FEATURE_CHECKLIST.md` for feature overview
@@ -199,6 +221,7 @@ Week 4-5 (Days 22-38)
 **What you'll have:** Complete understanding before coding
 
 ### Option C: I want to plan with my team
+
 1. Share `PROJECT_PLAN.md` with team
 2. Discuss tech stack in `TECH_STACK.md`
 3. Distribute roles based on features in `FEATURE_CHECKLIST.md`
@@ -213,6 +236,7 @@ Week 4-5 (Days 22-38)
 ## 📊 Key Statistics
 
 ### Project Scope
+
 - **Total Steps:** 10
 - **Total Features:** 200+
 - **Total Documentation Pages:** 5
@@ -220,6 +244,7 @@ Week 4-5 (Days 22-38)
 - **Team Skill Level:** Intermediate to Advanced
 
 ### Architecture
+
 - **Frontend Components:** 15+
 - **Backend Endpoints:** 15+
 - **Database Collections:** 6
@@ -227,6 +252,7 @@ Week 4-5 (Days 22-38)
 - **Responsive Breakpoints:** 5
 
 ### Performance Targets
+
 - **Page Load Time:** < 2 seconds
 - **API Response:** < 200ms
 - **GSAP Animation FPS:** 60
@@ -255,26 +281,31 @@ Your project is successfully complete when:
 ## 📚 Learning Resources (By Technology)
 
 ### GSAP Animations
+
 - Official Docs: https://gsap.com/docs/
 - Scroll Animations: https://gsap.com/docs/v3/Plugins/ScrollTrigger/
 - Page Flip Tutorial: Search "GSAP page flip animation"
 
 ### React Best Practices
+
 - React Docs: https://react.dev/
 - Hooks Guide: https://react.dev/reference/react/hooks
 - Performance: https://react.dev/learn/render-and-commit
 
 ### Express.js Backend
+
 - Express Guide: https://expressjs.com/en/guide/routing.html
 - Middleware: https://expressjs.com/en/guide/using-middleware.html
 - Error Handling: https://expressjs.com/en/guide/error-handling.html
 
 ### MongoDB
+
 - Official Docs: https://www.mongodb.com/docs/
 - Mongoose Guide: https://mongoosejs.com/docs/api.html
 - Schema Design: https://www.mongodb.com/docs/manual/core/databases-and-collections/
 
 ### Deployment
+
 - Vercel: https://vercel.com/docs
 - MongoDB Atlas: https://www.mongodb.com/docs/atlas/
 - Railway: https://railway.app/docs
@@ -284,8 +315,9 @@ Your project is successfully complete when:
 ## 🤝 Contributing & Customization
 
 This documentation is your starting point. Feel free to:
+
 - ✏️ Customize features based on your needs
-- 📝 Add additional steps or sub-steps  
+- 📝 Add additional steps or sub-steps
 - 🎨 Modify design recommendations
 - 🔄 Adjust timeline based on your team
 - ➕ Add more themes, features, or animations
@@ -331,13 +363,13 @@ A: Free tier initially covers everything (Vercel, MongoDB Atlas, etc.)
 
 ## 🎓 Next Steps Summary
 
-| Priority | Action | Document | Time |
-|----------|--------|----------|------|
-| 🔴 **Immediate** | Read master plan | PROJECT_PLAN.md | 20 min |
-| 🔴 **Immediate** | Review tech stack | TECH_STACK.md | 15 min |
-| 🟡 **This Week** | Setup development environment | STEP_1_SETUP_GUIDE.md | 3 hours |
-| 🟡 **This Week** | Initialize GitHub repo | STEP_1_SETUP_GUIDE.md | 30 min |
-| 🟢 **Next Week** | Begin Step 2: Backend API | PROJECT_PLAN.md Step 2 | 3-4 days |
+| Priority         | Action                        | Document               | Time     |
+| ---------------- | ----------------------------- | ---------------------- | -------- |
+| 🔴 **Immediate** | Read master plan              | PROJECT_PLAN.md        | 20 min   |
+| 🔴 **Immediate** | Review tech stack             | TECH_STACK.md          | 15 min   |
+| 🟡 **This Week** | Setup development environment | STEP_1_SETUP_GUIDE.md  | 3 hours  |
+| 🟡 **This Week** | Initialize GitHub repo        | STEP_1_SETUP_GUIDE.md  | 30 min   |
+| 🟢 **Next Week** | Begin Step 2: Backend API     | PROJECT_PLAN.md Step 2 | 3-4 days |
 
 ---
 
@@ -354,11 +386,10 @@ A: Free tier initially covers everything (Vercel, MongoDB Atlas, etc.)
 
 Start with Step 1 → [STEP_1_SETUP_GUIDE.md](STEP_1_SETUP_GUIDE.md)
 
-Remember: *Great websites are built step-by-step. Focus on completing one step at a time, and you'll have an incredible platform for your poetry.*
+Remember: _Great websites are built step-by-step. Focus on completing one step at a time, and you'll have an incredible platform for your poetry._
 
 🎉 **Good luck with My Diary by NaKSh!** 🎉
 
 ---
 
-*This documentation was created to guide you through building your dream poetry platform. Each step has been carefully planned to ensure quality, performance, and user experience. Enjoy the journey!*
-
+_This documentation was created to guide you through building your dream poetry platform. Each step has been carefully planned to ensure quality, performance, and user experience. Enjoy the journey!_

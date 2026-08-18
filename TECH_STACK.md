@@ -3,29 +3,34 @@
 ## Frontend Stack
 
 ### Core Framework
+
 - **React 18** - Component-based UI with hooks
 - **TypeScript** - Type safety and better DX
 - **Vite** - Ultra-fast build tool
 - **Tailwind CSS** - Utility-first styling for rapid UI development
 
 ### Animations & Interactions
+
 - **GSAP (GreenSock Animation Platform)** - Professional animations (scroll, zoom, flip)
 - **Framer Motion** - React animation library for micro-interactions
 - **AOS (Animate On Scroll)** - Scroll trigger animations
 - **react-flip-toolkit** - Book page flip animations (alternative to custom CSS)
 
 ### UI & Components
+
 - **Shadcn/ui** - Unstyled, accessible component library
 - **Radix UI** - Primitive components for custom design
 - **React Icons** - Icon library
 - **Storybook** - Component development environment
 
 ### State Management
+
 - **Zustand** - Lightweight state management
 - **TanStack Query (React Query)** - Server state management
 - **Context API** - Built-in React state for themes
 
 ### Utils & Libraries
+
 - **jsPDF** - PDF generation client-side
 - **html2canvas** - Convert HTML to images
 - **React Hook Form** - Efficient form handling
@@ -35,6 +40,7 @@
 - **react-markdown** - Markdown rendering
 
 ### Development Tools
+
 - **ESLint** - Code quality
 - **Prettier** - Code formatting
 - **Vitest** - Unit testing
@@ -46,22 +52,24 @@
 ## Backend Stack
 
 ### Core Framework
+
 - **Node.js 18+** - JavaScript runtime
 - **Express.js** - Lightweight web framework
 - **TypeScript** - Type safety
 
 ### Database
+
 - **MongoDB** (Primary recommendation) + **Mongoose** ODM
   - Flexible schema for themes and customizations
   - Easy scaling
   - Good for JSON-like data (poems, metadata)
-  
 - **PostgreSQL** (Alternative)
   - Better for relational data
   - JSONB support for complex fields
   - More robust for production
 
 ### Authentication & Security
+
 - **jsonwebtoken (JWT)** - Admin authentication
 - **bcryptjs** - Password hashing
 - **helmet** - Security headers
@@ -70,18 +78,21 @@
 - **dotenv** - Environment variables
 
 ### Email & Notifications
+
 - **Nodemailer** - Email sending
 - **node-schedule** - Scheduled tasks (daily/weekly digests)
 - **Bull** or **Bee-Queue** - Job queue for async email processing
 - **SendGrid** or **AWS SES** - Email service provider (optional)
 
 ### File Handling & Storage
+
 - **sharp** - High-performance image processing (JPEG generation)
 - **multer** - File upload middleware
 - **aws-sdk** - AWS S3 integration (optional)
 - **pdfkit** - PDF generation (server-side alternative)
 
 ### Development Tools
+
 - **Mocha** - Testing framework
 - **Chai** - Assertion library
 - **Supertest** - API testing
@@ -90,6 +101,7 @@
 - **cors** - Cross-Origin Resource Sharing
 
 ### Monitoring & Analytics
+
 - **Sentry** - Error tracking
 - **Winston** - Logging
 - **New Relic** or **DataDog** - Performance monitoring (optional)
@@ -101,6 +113,7 @@
 ### Collections/Tables
 
 #### Poems
+
 ```javascript
 {
   _id: ObjectId,
@@ -123,6 +136,7 @@
 ```
 
 #### Ratings
+
 ```javascript
 {
   _id: ObjectId,
@@ -137,6 +151,7 @@
 ```
 
 #### Readers
+
 ```javascript
 {
   _id: ObjectId,
@@ -157,6 +172,7 @@
 ```
 
 #### Themes
+
 ```javascript
 {
   _id: ObjectId,
@@ -194,6 +210,7 @@
 ```
 
 #### Subscriptions
+
 ```javascript
 {
   _id: ObjectId,
@@ -208,6 +225,7 @@
 ```
 
 #### Admin
+
 ```javascript
 {
   _id: ObjectId,
@@ -230,6 +248,7 @@
 ## API Endpoints Summary
 
 ### Poems
+
 - `GET /api/poems` - Get all published poems
 - `GET /api/poems/:id` - Get single poem
 - `POST /api/poems` - Create poem (admin)
@@ -239,17 +258,20 @@
 - `GET /api/poems/:id/export/jpeg` - Export as JPEG
 
 ### Ratings & Feedback
+
 - `POST /api/ratings` - Submit rating
 - `GET /api/poems/:id/ratings` - Get poem ratings
 - `GET /api/poems/:id/feedback` - Get public feedback
 
 ### Readers
+
 - `POST /api/readers` - Create reader profile
 - `GET /api/readers/:id` - Get reader profile
 - `PUT /api/readers/:id` - Update reader profile
 - `GET /api/readers/:id/annotations` - Get reader's annotations
 
 ### Themes
+
 - `GET /api/themes` - Get all themes
 - `GET /api/themes/:id` - Get single theme
 - `POST /api/themes` - Create theme (admin)
@@ -257,11 +279,13 @@
 - `DELETE /api/themes/:id` - Delete theme (admin)
 
 ### Subscriptions
+
 - `POST /api/subscriptions` - Subscribe to emails
 - `DELETE /api/subscriptions/:token` - Unsubscribe
 - `GET /api/subscriptions/status/:email` - Check subscription status
 
 ### Admin
+
 - `POST /api/admin/login` - Admin login
 - `POST /api/admin/logout` - Admin logout
 - `GET /api/admin/dashboard` - Dashboard stats
@@ -272,12 +296,14 @@
 ## Deployment Recommendations
 
 ### Frontend
+
 - **Vercel** (Recommended) - Optimized for React, serverless functions
 - **Netlify** - Similar to Vercel, great DX
 - **AWS Amplify** - Full AWS integration
 - **GitHub Pages** - Static hosting (backend required separately)
 
 ### Backend
+
 - **Heroku** - Easy deployment, good for beginners
 - **Railway.app** - Modern alternative to Heroku
 - **DigitalOcean App Platform** - Good price-to-performance
@@ -285,18 +311,21 @@
 - **Render** - Developer-friendly deployment
 
 ### Database
+
 - **MongoDB Atlas** - Cloud MongoDB (free tier available)
 - **PostgreSQL on Heroku/Railway** - Managed databases
 - **AWS RDS** - Managed relational databases
 - **Supabase** - Open-source Firebase alternative
 
 ### File Storage
+
 - **AWS S3** - Industry standard
 - **Firebase Storage** - Google-backed solution
 - **Cloudinary** - Image optimization included
 - **DigitalOcean Spaces** - S3-compatible, affordable
 
 ### Email Service
+
 - **Gmail SMTP** - Free, limited
 - **SendGrid** - Free tier: 100 emails/day
 - **AWS SES** - Very affordable at scale
@@ -308,6 +337,7 @@
 ## Package.json Dependencies Reference
 
 ### Frontend Key Dependencies
+
 ```json
 {
   "react": "^18.x",
@@ -327,6 +357,7 @@
 ```
 
 ### Backend Key Dependencies
+
 ```json
 {
   "express": "^4.x",
@@ -387,4 +418,3 @@
 8. Build admin dashboard
 9. Integrate email notifications
 10. Deploy and optimize
-

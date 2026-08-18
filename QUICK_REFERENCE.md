@@ -6,22 +6,22 @@
 FOUNDATION & SETUP (2-3 days)
     ↓
     Step 1: Project Architecture & Environment Setup
-    
+
 CORE INFRASTRUCTURE (3-4 days)
     ↓
     Step 2: Backend API & Database Setup
-    
+
 CORE FRONTEND - READER (8-11 days)
     ├─→ Step 3: Landing Page & Navigation Architecture (2-3 days)
     ├─→ Step 4: Book-Like Poem Display System (4-5 days)
     └─→ Step 5: Reader Profile & Interactive Features (2-3 days)
-    
+
 ADVANCED FEATURES (11-15 days)
     ├─→ Step 6: Premium Theme System (3-4 days)
     ├─→ Step 7: Admin Dashboard & Poem Management (4-5 days)
     ├─→ Step 8: Export & Download Features (2-3 days)
     └─→ Step 9: Email Subscription & Notification System (2-3 days)
-    
+
 POLISH & DEPLOYMENT (3-5 days)
     ↓
     Step 10: Testing, Optimization & Deployment
@@ -33,41 +33,47 @@ TOTAL TIMELINE: 27-38 Days
 
 ## 🎯 Key Milestones
 
-| Milestone | Target Date | Deliverable |
-|-----------|------------|-------------|
-| Phase 1 Complete | Day 3-7 | Working backend, database, project structure |
-| Phase 2 Complete | Day 7-18 | Landing page, book display, reader profiles working |
-| Phase 3 Complete | Day 18-33 | Themes, admin panel, exports, email ready |
-| Phase 4 Complete | Day 33-38 | Fully tested, deployed, live |
+| Milestone        | Target Date | Deliverable                                         |
+| ---------------- | ----------- | --------------------------------------------------- |
+| Phase 1 Complete | Day 3-7     | Working backend, database, project structure        |
+| Phase 2 Complete | Day 7-18    | Landing page, book display, reader profiles working |
+| Phase 3 Complete | Day 18-33   | Themes, admin panel, exports, email ready           |
+| Phase 4 Complete | Day 33-38   | Fully tested, deployed, live                        |
 
 ---
 
 ## 🔧 Technology Quick Links
 
 **Animation Library:**
+
 - GSAP: https://gsap.com/docs/
 - Framer Motion: https://www.framer.com/motion/
 
 **PDF/Export:**
+
 - jsPDF: https://github.com/parallax/jsPDF
 - html2canvas: https://html2canvas.hertzen.com/
 - Sharp.js: https://sharp.pixelplumbing.com/
 
 **Database:**
+
 - MongoDB: https://www.mongodb.com/docs/
 - Mongoose: https://mongoosejs.com/
 - MongoDB Atlas: https://www.mongodb.com/cloud/atlas
 
 **Backend:**
+
 - Express.js: https://expressjs.com/
 - Node.js: https://nodejs.org/
 
 **Frontend:**
+
 - React: https://react.dev/
 - Vite: https://vitejs.dev/
 - Tailwind CSS: https://tailwindcss.com/
 
 **Email:**
+
 - Nodemailer: https://nodemailer.com/
 - SendGrid: https://sendgrid.com/
 - AWS SES: https://aws.amazon.com/ses/
@@ -77,6 +83,7 @@ TOTAL TIMELINE: 27-38 Days
 ## 📊 API Endpoint Reference
 
 ### Reader-Facing Endpoints
+
 ```
 GET  /api/poems                    # Get all published poems
 GET  /api/poems/:id               # Get single poem
@@ -89,6 +96,7 @@ POST /api/subscriptions           # Subscribe to emails
 ```
 
 ### Admin-Only Endpoints
+
 ```
 POST   /api/admin/login           # Admin login
 POST   /api/poems                 # Create poem
@@ -104,6 +112,7 @@ GET    /api/admin/dashboard       # Dashboard stats
 ## 🎨 Design System Quick Reference
 
 ### Color Palette (Dark Theme)
+
 ```
 Primary Background:   #0f0f0f (almost black)
 Secondary:           #1a1a1a
@@ -115,6 +124,7 @@ Success:             #10b981 (emerald)
 ```
 
 ### Typography Recommendations
+
 ```
 Headings:  Playfair Display, Georgia, or elegant serif
 Body:      Inter, Poppins, or clean sans-serif
@@ -129,6 +139,7 @@ Font Sizes:
 ```
 
 ### Spacing Scale
+
 ```
 xs:  0.25rem (4px)
 sm:  0.5rem  (8px)
@@ -155,6 +166,7 @@ Extra Large: > 1280px
 ## 🚀 Quick Start Commands
 
 ### Frontend Setup
+
 ```bash
 npm create vite@latest my-diary-frontend -- --template react
 cd my-diary-frontend
@@ -167,6 +179,7 @@ npm run dev
 ```
 
 ### Backend Setup
+
 ```bash
 mkdir my-diary-backend
 cd my-diary-backend
@@ -179,6 +192,7 @@ npm run dev
 ```
 
 ### Database Setup
+
 ```bash
 # MongoDB Atlas (recommended)
 1. Go to https://www.mongodb.com/cloud/atlas
@@ -207,16 +221,16 @@ npm run dev
 
 ## 📈 Performance Targets
 
-| Metric | Target | Tool |
-|--------|--------|------|
-| Initial Load | < 2s | Lighthouse, WebPageTest |
-| Time to Interactive | < 3s | Lighthouse |
-| GSAP Animation FPS | 60 | Chrome DevTools Performance |
-| API Response | < 200ms | Postman, Network tab |
-| Bundle Size | < 200KB | Webpack Bundle Analyzer |
-| Lighthouse Score | 90+ | Lighthouse |
-| PDF Generation | < 3s | Custom timing logs |
-| JPEG Export | < 2s | Custom timing logs |
+| Metric              | Target  | Tool                        |
+| ------------------- | ------- | --------------------------- |
+| Initial Load        | < 2s    | Lighthouse, WebPageTest     |
+| Time to Interactive | < 3s    | Lighthouse                  |
+| GSAP Animation FPS  | 60      | Chrome DevTools Performance |
+| API Response        | < 200ms | Postman, Network tab        |
+| Bundle Size         | < 200KB | Webpack Bundle Analyzer     |
+| Lighthouse Score    | 90+     | Lighthouse                  |
+| PDF Generation      | < 3s    | Custom timing logs          |
+| JPEG Export         | < 2s    | Custom timing logs          |
 
 ---
 
@@ -240,21 +254,25 @@ npm run dev
 ## 📞 Support & Resources
 
 ### Frontend Resources
+
 - React Best Practices: https://react.dev/learn
 - GSAP Docs: https://gsap.com/docs/
 - Tailwind CSS: https://tailwindcss.com/docs
 
 ### Backend Resources
+
 - Express.js Guide: https://expressjs.com/en/guide/routing.html
 - Mongoose Docs: https://mongoosejs.com/docs/api.html
 - Node.js Best Practices: https://nodejs.org/en/docs/guides/
 
 ### Deployment Resources
+
 - Vercel Docs: https://vercel.com/docs
 - Heroku Docs: https://devcenter.heroku.com/
 - MongoDB Atlas: https://www.mongodb.com/docs/atlas/
 
 ### Community
+
 - Stack Overflow: Tag your questions [react], [express], [mongodb]
 - GitHub Discussions: Open source library communities
 - Dev.to: Great tutorials and articles
@@ -374,4 +392,3 @@ my-diary/
 
 Generated: August 18, 2026
 Last Updated: August 18, 2026
-

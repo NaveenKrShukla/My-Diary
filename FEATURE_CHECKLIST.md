@@ -3,6 +3,7 @@
 ## Core Features
 
 ### Landing Page & Navigation
+
 - [ ] Hero section with "My Diary by NaKSh" title
 - [ ] GSAP zoom-in scroll animation on title
 - [ ] Dark theme with aesthetic lighting
@@ -15,6 +16,7 @@
 - [ ] Floating/breathing button animations
 
 ### Reader Experience
+
 - [ ] Reader profile creation (name only, no password)
 - [ ] 12+ animal profile picture options
 - [ ] Profile customization
@@ -23,6 +25,7 @@
 - [ ] Signout/change profile option
 
 ### Book-Like Poem Display
+
 - [ ] Book index/table of contents
 - [ ] Book page flip animation
 - [ ] 3D perspective effects
@@ -39,6 +42,7 @@
 - [ ] Book cover for first poem
 
 ### Poem Display & Reading
+
 - [ ] Display poem title
 - [ ] Display poem written date
 - [ ] Display poem upload date (optional)
@@ -53,6 +57,7 @@
 - [ ] Quote sharing functionality
 
 ### Rating & Feedback System
+
 - [ ] 1-5 star rating display
 - [ ] Star animation on hover
 - [ ] Click to submit rating
@@ -66,6 +71,7 @@
 - [ ] Reader profile picture with rating
 
 ### Theme System
+
 - [ ] Dark theme (default, primary focus)
 - [ ] Zen theme (calm, muted colors)
 - [ ] Cyberpunk theme (neon, dark background)
@@ -81,6 +87,7 @@
 - [ ] Smooth theme transitions
 
 ### Download & Export
+
 - [ ] Download poem as PDF button
 - [ ] Download poem as JPEG button
 - [ ] PDF includes title, date, author
@@ -94,6 +101,7 @@
 - [ ] Multiple format options in dropdown
 
 ### Email Subscription
+
 - [ ] Email subscription modal
 - [ ] Email input validation
 - [ ] Subscription confirmation
@@ -104,6 +112,7 @@
 - [ ] Double opt-in (confirmation email)
 
 ### Admin Panel
+
 - [ ] Admin login page
 - [ ] Username field (placeholder: "NaKSh")
 - [ ] Password field
@@ -115,6 +124,7 @@
 - [ ] Admin-only routes protection
 
 ### Admin - Poem Management
+
 - [ ] Create poem form
 - [ ] Rich text editor for content
 - [ ] Title input
@@ -133,6 +143,7 @@
 - [ ] Bulk actions (publish multiple)
 
 ### Admin - Theme Management
+
 - [ ] View all themes
 - [ ] Create new theme
 - [ ] Theme name input
@@ -148,6 +159,7 @@
 - [ ] Import theme config
 
 ### Admin - Settings & Customization
+
 - [ ] Site title configuration
 - [ ] Site description
 - [ ] Admin email
@@ -161,6 +173,7 @@
 - [ ] Email delivery stats
 
 ### Admin - Feedback & Moderation
+
 - [ ] View all feedback/ratings
 - [ ] Filter by poem
 - [ ] Filter by rating stars
@@ -171,6 +184,7 @@
 - [ ] Sort by date/rating
 
 ### Admin - Email Notifications
+
 - [ ] Send new poem notification immediately
 - [ ] Schedule email sending
 - [ ] Email template preview
@@ -183,6 +197,7 @@
 - [ ] Bounce handling
 
 ### Admin - Preview & Testing
+
 - [ ] Preview poem in different themes
 - [ ] Preview on mobile/tablet/desktop
 - [ ] Test book flip animation
@@ -197,6 +212,7 @@
 ## Additional Features
 
 ### Notifications & Alerts
+
 - [ ] Toast notifications for actions
 - [ ] Success message on rating submission
 - [ ] Error messages with helpful info
@@ -205,6 +221,7 @@
 - [ ] Welcome notification on profile creation
 
 ### Performance & Optimization
+
 - [ ] Image lazy loading
 - [ ] Code splitting
 - [ ] Minified CSS/JavaScript
@@ -217,6 +234,7 @@
 - [ ] CDN for static assets
 
 ### Accessibility
+
 - [ ] WCAG 2.1 AA compliance
 - [ ] Keyboard navigation support
 - [ ] Screen reader friendly
@@ -229,6 +247,7 @@
 - [ ] Dyslexia-friendly font option (bonus)
 
 ### SEO & Discoverability
+
 - [ ] Meta tags for each poem
 - [ ] OG tags for social sharing
 - [ ] Sitemap generation
@@ -241,6 +260,7 @@
 - [ ] Robots meta tags
 
 ### Security
+
 - [ ] Input validation (frontend)
 - [ ] Input validation (backend)
 - [ ] CORS headers
@@ -255,6 +275,7 @@
 - [ ] Content Security Policy headers
 
 ### Analytics & Monitoring
+
 - [ ] Page view tracking
 - [ ] Poem view tracking
 - [ ] Download tracking
@@ -267,6 +288,7 @@
 - [ ] Dashboard with key metrics
 
 ### Responsive Design
+
 - [ ] Mobile layout (< 480px)
 - [ ] Tablet layout (480px - 768px)
 - [ ] Desktop layout (> 768px)
@@ -304,6 +326,7 @@
 ## Testing Checklist
 
 ### Unit Tests
+
 - [ ] Admin authentication
 - [ ] Rating calculation
 - [ ] Date formatting
@@ -313,6 +336,7 @@
 - [ ] JPEG export
 
 ### Integration Tests
+
 - [ ] API endpoints
 - [ ] Database operations
 - [ ] Email sending workflow
@@ -322,6 +346,7 @@
 - [ ] Subscribe to email workflow
 
 ### E2E Tests
+
 - [ ] Complete reader journey (profile → read poem → rate)
 - [ ] Complete admin journey (login → create poem → publish)
 - [ ] Theme switching workflow
@@ -330,6 +355,7 @@
 - [ ] Responsive design on different breakpoints
 
 ### Performance Tests
+
 - [ ] Page load time (< 2s target)
 - [ ] GSAP animation FPS (60 target)
 - [ ] API response time (< 200ms target)
@@ -338,6 +364,7 @@
 - [ ] Bundle size optimization
 
 ### Browser Compatibility
+
 - [ ] Chrome/Edge (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
@@ -382,4 +409,3 @@
 - [ ] Feedback quality: Avg feedback per poem
 - [ ] System uptime: 99.9%+
 - [ ] API response time: < 200ms avg
-

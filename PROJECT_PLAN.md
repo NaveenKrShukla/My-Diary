@@ -7,15 +7,18 @@
 ## Phase 1: Foundation & Setup
 
 ### **Step 1: Project Architecture & Environment Setup**
+
 **Duration:** 2-3 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Initialize full-stack project structure (Frontend + Backend + Database)
 - [ ] Set up version control (GitHub)
 - [ ] Configure development environment (.env files)
 - [ ] Database schema design for poems, users, ratings, feedback, themes, subscriptions
 
 **Tech Stack:**
+
 - **Frontend:** React 18 + Vite, TailwindCSS, GSAP for animations, Framer Motion
 - **Backend:** Node.js + Express.js
 - **Database:** MongoDB (or PostgreSQL)
@@ -25,6 +28,7 @@
 - **Authentication:** JWT (admin), simple name-based profiles (readers)
 
 **Setup Tasks:**
+
 ```
 my-diary-project/
 ├── frontend/
@@ -51,9 +55,11 @@ my-diary-project/
 ## Phase 2: Core Infrastructure
 
 ### **Step 2: Backend API & Database Setup**
+
 **Duration:** 3-4 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Express.js server with CORS, compression, error handling
 - [ ] MongoDB/PostgreSQL database connection
 - [ ] REST API endpoints for poems (CRUD)
@@ -67,6 +73,7 @@ my-diary-project/
   - Themes (name, colors, fonts, animations config)
 
 **API Endpoints (15+ endpoints):**
+
 - `POST /api/admin/login` - Admin authentication
 - `GET/POST/PUT/DELETE /api/poems` - Poem management
 - `POST /api/themes` - Theme creation
@@ -81,9 +88,11 @@ my-diary-project/
 ## Phase 3: Core Frontend - Reader Experience
 
 ### **Step 3: Landing Page & Navigation Architecture**
+
 **Duration:** 2-3 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Landing page: "My Diary by NaKSh" with GSAP zoom-in scroll animations
 - [ ] Premium dark theme with aesthetic lighting effects
 - [ ] Two CTA buttons: "Visit as Reader" | "Add Something New" (Admin)
@@ -91,6 +100,7 @@ my-diary-project/
 - [ ] Theme switcher (global state management)
 
 **Features:**
+
 - **GSAP Animations:**
   - Zoom-in text animation on hero title
   - Parallax scroll effects
@@ -107,9 +117,11 @@ my-diary-project/
 ---
 
 ### **Step 4: Book-Like Poem Display System**
+
 **Duration:** 4-5 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Book page flip animation (using Flip.js or custom CSS transitions)
 - [ ] Responsive page container (adapts to content size)
 - [ ] Index/Table of Contents with go-to functionality
@@ -118,6 +130,7 @@ my-diary-project/
 - [ ] Next/Previous page navigation
 
 **Features:**
+
 - **Book Styling:**
   - 3D perspective transform for realistic page flip
   - Shadow effects for depth (table-like appearance)
@@ -134,9 +147,11 @@ my-diary-project/
 ---
 
 ### **Step 5: Reader Profile & Interactive Features**
+
 **Duration:** 2-3 days | **Priority:** HIGH
 
 **Deliverables:**
+
 - [ ] Simple reader onboarding (name input, no password)
 - [ ] 12+ animal profile picture options
 - [ ] Profile card display
@@ -146,6 +161,7 @@ my-diary-project/
 - [ ] Highlighter/Pen/Eraser tools for readers
 
 **Features:**
+
 - **Reader Creation:**
   - Name-based profile (no auth required)
   - Select from 12+ cute animal profile pictures
@@ -169,9 +185,11 @@ my-diary-project/
 ## Phase 4: Advanced Features & Admin Panel
 
 ### **Step 6: Premium Theme System**
+
 **Duration:** 3-4 days | **Priority:** HIGH
 
 **Deliverables:**
+
 - [ ] 5+ pre-built themes (Dark, Zen, Cyberpunk, Vintage, Neon Aurora)
 - [ ] Theme customization engine
 - [ ] Real-time theme preview
@@ -179,6 +197,7 @@ my-diary-project/
 - [ ] Mobile-responsive themes
 
 **Theme Configurations:**
+
 - Color palettes (background, text, accent, gradient)
 - Typography (fonts, sizes, weights)
 - Animation styles (speed, easing, intensity)
@@ -186,6 +205,7 @@ my-diary-project/
 - Button styling and interactions
 
 **Admin Theme Panel:**
+
 - Add/Edit/Delete themes
 - Visual color picker
 - Typography preview
@@ -195,9 +215,11 @@ my-diary-project/
 ---
 
 ### **Step 7: Admin Dashboard & Poem Management**
+
 **Duration:** 4-5 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Admin login page (username: "NaKSh", password field)
 - [ ] Dashboard layout:
   - Poems management (list, create, edit, delete)
@@ -225,9 +247,11 @@ my-diary-project/
 ---
 
 ### **Step 8: Export & Download Features**
+
 **Duration:** 2-3 days | **Priority:** HIGH
 
 **Deliverables:**
+
 - [ ] PDF export (jsPDF + html2canvas)
 - [ ] JPEG export (sharp.js backend)
 - [ ] High-quality image generation
@@ -235,6 +259,7 @@ my-diary-project/
 - [ ] Download button on each poem
 
 **Features:**
+
 - **PDF Export:**
   - Professional layout with styling
   - Include poem title, date, author attribution
@@ -252,9 +277,11 @@ my-diary-project/
 ## Phase 5: Email & Notifications
 
 ### **Step 9: Email Subscription & Notification System**
+
 **Duration:** 2-3 days | **Priority:** MEDIUM
 
 **Deliverables:**
+
 - [ ] Email subscription form (modal/component)
 - [ ] Welcome email template
 - [ ] New poem notification email template
@@ -262,6 +289,7 @@ my-diary-project/
 - [ ] Email preference management
 
 **Features:**
+
 - **Subscription System:**
   - Reader can subscribe during profile creation
   - Email collection with consent
@@ -286,9 +314,11 @@ my-diary-project/
 ## Phase 6: Polish & Deployment
 
 ### **Step 10: Testing, Optimization & Deployment**
+
 **Duration:** 3-5 days | **Priority:** CRITICAL
 
 **Deliverables:**
+
 - [ ] Frontend testing (Jest, React Testing Library)
 - [ ] Backend API testing (Mocha, Chai)
 - [ ] Performance optimization (image lazy loading, code splitting)
@@ -304,6 +334,7 @@ my-diary-project/
   - Storage: AWS S3 or Firebase Storage for PDFs/JPEGs
 
 **Additional Tasks:**
+
 - [ ] Domain setup (mydiary-naksh.com or similar)
 - [ ] SSL certificate (HTTPS)
 - [ ] Database backups & disaster recovery
@@ -346,13 +377,13 @@ my-diary-project/
 
 ## Timeline Summary
 
-| Phase | Steps | Duration | Status |
-|-------|-------|----------|--------|
-| Foundation | 1-2 | 5-7 days | To Start |
-| Infrastructure | 3-5 | 8-11 days | To Start |
-| Advanced | 6-9 | 11-15 days | To Start |
-| Polish | 10 | 3-5 days | To Start |
-| **TOTAL** | **10** | **27-38 days** | - |
+| Phase          | Steps  | Duration       | Status   |
+| -------------- | ------ | -------------- | -------- |
+| Foundation     | 1-2    | 5-7 days       | To Start |
+| Infrastructure | 3-5    | 8-11 days      | To Start |
+| Advanced       | 6-9    | 11-15 days     | To Start |
+| Polish         | 10     | 3-5 days       | To Start |
+| **TOTAL**      | **10** | **27-38 days** | -        |
 
 ---
 
@@ -376,7 +407,7 @@ my-diary-project/
 **Next Action:** Begin with Step 1 - Set up the project structure and initialize repositories.
 
 Would you like me to:
+
 1. Create the initial project scaffolding?
 2. Generate boilerplate code for any specific step?
 3. Provide detailed implementation guides for specific features?
-
