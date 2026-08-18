@@ -10,6 +10,7 @@
 ## 📊 What We Built
 
 ### Database Models Created (6 files)
+
 1. ✅ **Poem.js** - Poetry submissions with metadata
 2. ✅ **Reader.js** - Reader profiles (no auth, just name + avatar)
 3. ✅ **Rating.js** - Ratings and feedback on poems
@@ -18,11 +19,13 @@
 6. ✅ **Admin.js** - Admin user with JWT authentication
 
 ### Middleware Created (3 files)
+
 1. ✅ **auth.js** - JWT token generation and verification
 2. ✅ **errorHandler.js** - Centralized error handling
 3. ✅ **validation.js** - Input validation for all endpoints
 
 ### Controllers Created (5 files)
+
 1. ✅ **poemController.js** - Poem CRUD operations
 2. ✅ **readerController.js** - Reader profile management
 3. ✅ **ratingController.js** - Rating and feedback handling
@@ -30,6 +33,7 @@
 5. ✅ **adminController.js** - Admin authentication and dashboard
 
 ### API Routes Created (6 files)
+
 1. ✅ **poems.js** - All poem endpoints
 2. ✅ **readers.js** - Reader profile endpoints
 3. ✅ **ratings.js** - Rating and feedback endpoints
@@ -42,6 +46,7 @@
 ## 🔌 API Endpoints Implemented (20+ endpoints)
 
 ### Poems (7 endpoints)
+
 ```
 GET    /api/poems              - Get all published poems
 GET    /api/poems/:id          - Get single poem (increments views)
@@ -52,6 +57,7 @@ GET    /api/poems/:id/stats    - Get poem statistics
 ```
 
 ### Readers (5 endpoints)
+
 ```
 POST   /api/readers            - Create reader profile (no auth needed)
 GET    /api/readers/:id        - Get reader profile
@@ -61,6 +67,7 @@ POST   /api/readers/:id/annotations      - Save highlights/notes
 ```
 
 ### Ratings & Feedback (5 endpoints)
+
 ```
 POST   /api/ratings           - Submit rating/feedback
 GET    /api/ratings/poem/:id  - Get all ratings for poem
@@ -70,6 +77,7 @@ DELETE /api/ratings/:id       - Delete rating (admin)
 ```
 
 ### Themes (6 endpoints)
+
 ```
 GET    /api/themes            - Get all active themes
 GET    /api/themes/:id        - Get single theme
@@ -79,6 +87,7 @@ DELETE /api/themes/:id        - Delete theme (admin)
 ```
 
 ### Subscriptions (3 endpoints)
+
 ```
 POST   /api/subscriptions           - Subscribe to newsletter
 DELETE /api/subscriptions/:token    - Unsubscribe (by token)
@@ -86,6 +95,7 @@ GET    /api/subscriptions/status/:email  - Check subscription status
 ```
 
 ### Admin (5 endpoints)
+
 ```
 POST   /api/admin/login        - Admin login (returns JWT)
 POST   /api/admin/logout       - Admin logout
@@ -99,6 +109,7 @@ PUT    /api/admin/settings     - Update admin settings
 ## 🛠️ Technologies & Features Implemented
 
 ### Authentication & Security
+
 - ✅ JWT token-based admin authentication
 - ✅ Password hashing with bcryptjs
 - ✅ Token expiry (7 days)
@@ -108,6 +119,7 @@ PUT    /api/admin/settings     - Update admin settings
 - ✅ Input validation on all endpoints
 
 ### Database Features
+
 - ✅ Mongoose schema validation
 - ✅ Automatic timestamps (createdAt, updatedAt)
 - ✅ Database indexing for queries
@@ -118,6 +130,7 @@ PUT    /api/admin/settings     - Update admin settings
 - ✅ Unique constraints
 
 ### Error Handling
+
 - ✅ Centralized error middleware
 - ✅ Mongoose validation errors
 - ✅ Duplicate key errors
@@ -127,6 +140,7 @@ PUT    /api/admin/settings     - Update admin settings
 - ✅ Production error hiding
 
 ### Data Validation
+
 - ✅ Email validation
 - ✅ Rating range validation (1-5)
 - ✅ Poem content validation
@@ -184,6 +198,7 @@ My Diary/
 ## 🚀 Current Status
 
 ### ✅ Running Services
+
 - **Frontend:** http://localhost:5173 (React + Vite)
 - **Backend:** http://localhost:5000 (Express + Node.js)
 - **API Routes:** All 20+ endpoints available
@@ -191,11 +206,13 @@ My Diary/
 - **Security:** CORS, Helmet, input validation active
 
 ### ⚠️ Waiting For
+
 - **MongoDB Connection:** Need to add MONGODB_URI to .env
 - **Admin Setup:** Ready to run `npm run setup` once DB connected
 - **Database Sync:** Models ready for MongoDB
 
 ### Terminal IDs (Still Running)
+
 - Frontend: 8c175c8d... (Vite dev server)
 - Backend: 1a77a16b... (Express with nodemon)
 
@@ -204,6 +221,7 @@ My Diary/
 ## 📝 What Works Right Now
 
 ✅ **API is ready and responding:**
+
 ```bash
 curl http://localhost:5000/api/health
 # Returns: { "status": "Server is running", "timestamp": "...", "environment": "development" }
@@ -222,6 +240,7 @@ curl http://localhost:5000/api/health
 ## 🔑 Next Steps (To Fully Activate)
 
 ### Step 1: Connect MongoDB (5 minutes)
+
 1. Go to: https://www.mongodb.com/cloud/atlas
 2. Create cluster and get connection string
 3. Update `backend/.env`:
@@ -231,43 +250,49 @@ curl http://localhost:5000/api/health
 4. Backend will auto-reconnect (watch console for ✅)
 
 ### Step 2: Setup Admin & Themes (1 minute)
+
 ```bash
 cd backend
 npm run setup
 ```
+
 This creates:
+
 - Admin user "NaKSh" (password: NaKShPoetry123 or your custom password)
 - Default themes: "Dark" and "Zen"
 
 ### Step 3: Test All Endpoints (5 minutes)
+
 All endpoints will work with actual database responses.
 
 ---
 
 ## 📊 By The Numbers
 
-| Metric | Count |
-|--------|-------|
-| Database Models | 6 |
-| Controllers | 5 |
-| Routes | 6 |
-| API Endpoints | 20+ |
-| Middleware Files | 3 |
-| Lines of Code | ~2000+ |
-| Files Created | 31 |
-| Git Commits | 2 |
+| Metric           | Count  |
+| ---------------- | ------ |
+| Database Models  | 6      |
+| Controllers      | 5      |
+| Routes           | 6      |
+| API Endpoints    | 20+    |
+| Middleware Files | 3      |
+| Lines of Code    | ~2000+ |
+| Files Created    | 31     |
+| Git Commits      | 2      |
 
 ---
 
 ## 💡 What Each Component Does
 
 ### Models
+
 - Define database schema
 - Validate data before saving
 - Handle relationships between collections
 - Create indexes for performance
 
 ### Controllers
+
 - Handle business logic
 - Process requests from routes
 - Query database
@@ -275,11 +300,13 @@ All endpoints will work with actual database responses.
 - Calculate statistics (avg rating, views, etc.)
 
 ### Middleware
+
 - **auth.js:** Generates and verifies JWT tokens
 - **errorHandler.js:** Catches and formats all errors
 - **validation.js:** Validates input before processing
 
 ### Routes
+
 - Define endpoints (GET, POST, PUT, DELETE)
 - Map endpoints to controllers
 - Apply authentication where needed
@@ -349,6 +376,7 @@ TOTAL PROGRESS: 20% (2 of 10 steps)
 ## 🚀 Ready for Next Step?
 
 Step 3 will focus on building the **Landing Page & Navigation** with:
+
 - Hero section with "My Diary by NaKSh" title
 - GSAP zoom-in animations
 - Theme switcher

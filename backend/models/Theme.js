@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
 const themeSchema = new mongoose.Schema({
-  name: { 
-    type: String, 
+  name: {
+    type: String,
     required: [true, 'Theme name is required'],
     unique: true,
     trim: true,
@@ -48,9 +48,9 @@ const themeSchema = new mongoose.Schema({
       min: 0.1,
       max: 1
     },
-    enableLighting: { 
-      type: Boolean, 
-      default: true 
+    enableLighting: {
+      type: Boolean,
+      default: true
     },
     lightingIntensity: {
       type: Number,
@@ -63,11 +63,11 @@ const themeSchema = new mongoose.Schema({
     type: String,
     default: null
   },
-  isActive: { 
-    type: Boolean, 
+  isActive: {
+    type: Boolean,
     default: true
   }
-}, { 
+}, {
   timestamps: true,
   collection: 'themes'
 })

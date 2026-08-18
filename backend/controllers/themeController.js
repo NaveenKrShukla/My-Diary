@@ -5,7 +5,7 @@ import { validateThemeData } from '../middleware/validation.js'
 export const getAllThemes = async (req, res, next) => {
   try {
     const themes = await Theme.find({ isActive: true }).sort('name')
-    
+
     res.json({
       success: true,
       data: themes
@@ -19,13 +19,13 @@ export const getAllThemes = async (req, res, next) => {
 export const getThemeById = async (req, res, next) => {
   try {
     const { id } = req.params
-    
+
     const theme = await Theme.findById(id)
-    
+
     if (!theme) {
       return res.status(404).json({ error: 'Theme not found' })
     }
-    
+
     res.json({
       success: true,
       data: theme
@@ -42,7 +42,7 @@ export const createTheme = async (req, res, next) => {
     if (validation.length > 0) {
       return res.status(400).json({ errors: validation })
     }
-    
+
     const theme = new Theme({
       name: req.body.name,
       description: req.body.description || '',
@@ -51,9 +51,9 @@ export const createTheme = async (req, res, next) => {
       animations: req.body.animations || {},
       preview: req.body.preview || null
     })
-    
+
     await theme.save()
-    
+
     res.status(201).json({
       success: true,
       message: 'Theme created successfully',
@@ -69,14 +69,14 @@ export const updateTheme = async (req, res, next) => {
   try {
     const { id } = req.params
     const allowedFields = ['name', 'description', 'colors', 'typography', 'animations', 'preview', 'isActive']
-    
+
     const updates = {}
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field]
       }
     }
-    
+
     // Validate if name is being changed
     if (updates.name) {
       const validation = validateThemeData({ name: updates.name })
@@ -84,17 +84,17 @@ export const updateTheme = async (req, res, next) => {
         return res.status(400).json({ errors: validation })
       }
     }
-    
+
     const theme = await Theme.findByIdAndUpdate(
       id,
       updates,
       { new: true, runValidators: true }
     )
-    
+
     if (!theme) {
       return res.status(404).json({ error: 'Theme not found' })
     }
-    
+
     res.json({
       success: true,
       message: 'Theme updated successfully',
@@ -109,13 +109,13 @@ export const updateTheme = async (req, res, next) => {
 export const deleteTheme = async (req, res, next) => {
   try {
     const { id } = req.params
-    
+
     const theme = await Theme.findByIdAndDelete(id)
-    
+
     if (!theme) {
       return res.status(404).json({ error: 'Theme not found' })
     }
-    
+
     res.json({
       success: true,
       message: 'Theme deleted successfully'

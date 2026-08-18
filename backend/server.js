@@ -37,8 +37,8 @@ if (process.env.MONGODB_URI) {
 
 // Health check route
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'Server is running', 
+  res.json({
+    status: 'Server is running',
     timestamp: new Date(),
     environment: process.env.NODE_ENV || 'development'
   })

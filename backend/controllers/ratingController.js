@@ -6,20 +6,20 @@ import { validateRating } from '../middleware/validation.js'
 export const submitRating = async (req, res, next) => {
   try {
     const { poemId, readerId, rating, feedback, isPublic } = req.body
-    
+
     if (!validateRating(rating)) {
       return res.status(400).json({ error: 'Rating must be between 1 and 5' })
     }
-    
+
     // Check if poem exists
     const poem = await Poem.findById(poemId)
     if (!poem) {
       return res.status(404).json({ error: 'Poem not found' })
     }
-    
+
     // Check if reader already rated this poem
     let existingRating = await Rating.findOne({ poemId, readerId })
-    
+
     if (existingRating) {
       // Update existing rating
       existingRating.rating = rating
@@ -37,16 +37,16 @@ export const submitRating = async (req, res, next) => {
       })
       await existingRating.save()
     }
-    
+
     // Update poem average rating
     const allRatings = await Rating.find({ poemId })
     const avgRating = allRatings.reduce((sum, r) => sum + r.rating, 0) / allRatings.length
-    
+
     await Poem.findByIdAndUpdate(poemId, {
       avgRating: parseFloat(avgRating.toFixed(1)),
       totalRatings: allRatings.length
     })
-    
+
     res.status(201).json({
       success: true,
       message: 'Rating submitted successfully',
@@ -61,15 +61,15 @@ export const submitRating = async (req, res, next) => {
 export const getPoemRatings = async (req, res, next) => {
   try {
     const { poemId } = req.params
-    
+
     const ratings = await Rating.find({ poemId })
       .populate('readerId', 'name profilePicture')
       .sort('-createdAt')
-    
-    const avgRating = ratings.length > 0 
+
+    const avgRating = ratings.length > 0
       ? (ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length).toFixed(1)
       : 0
-    
+
     res.json({
       success: true,
       data: {
@@ -89,12 +89,12 @@ export const getPoemRatings = async (req, res, next) => {
 export const getPoemFeedback = async (req, res, next) => {
   try {
     const { poemId } = req.params
-    
+
     const feedback = await Rating.find({ poemId, isPublic: true, feedback: { $ne: '' } })
       .populate('readerId', 'name profilePicture')
       .select('rating feedback readerId createdAt')
       .sort('-createdAt')
-    
+
     res.json({
       success: true,
       data: feedback
@@ -108,11 +108,11 @@ export const getPoemFeedback = async (req, res, next) => {
 export const getReaderRatings = async (req, res, next) => {
   try {
     const { readerId } = req.params
-    
+
     const ratings = await Rating.find({ readerId })
       .populate('poemId', 'title')
       .sort('-createdAt')
-    
+
     res.json({
       success: true,
       data: ratings
@@ -126,24 +126,24 @@ export const getReaderRatings = async (req, res, next) => {
 export const deleteRating = async (req, res, next) => {
   try {
     const { ratingId } = req.params
-    
+
     const rating = await Rating.findByIdAndDelete(ratingId)
-    
+
     if (!rating) {
       return res.status(404).json({ error: 'Rating not found' })
     }
-    
+
     // Update poem average rating
     const allRatings = await Rating.find({ poemId: rating.poemId })
     const avgRating = allRatings.length > 0
       ? (allRatings.reduce((sum, r) => sum + r.rating, 0) / allRatings.length).toFixed(1)
       : 0
-    
+
     await Poem.findByIdAndUpdate(rating.poemId, {
       avgRating: parseFloat(avgRating),
       totalRatings: allRatings.length
     })
-    
+
     res.json({
       success: true,
       message: 'Rating deleted successfully'

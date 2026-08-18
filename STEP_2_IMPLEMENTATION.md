@@ -1,6 +1,7 @@
 # Step 2: Backend API & Database Setup - Complete Implementation Guide
 
 ## 🎯 Overview
+
 Building the complete REST API with database models, authentication, and 15+ endpoints.
 
 **Duration:** 3-4 days | **Priority:** CRITICAL  
@@ -11,7 +12,7 @@ Building the complete REST API with database models, authentication, and 15+ end
 ## 📋 Implementation Checklist
 
 - [ ] Part 1: Create all 6 database models
-- [ ] Part 2: Create authentication & middleware  
+- [ ] Part 2: Create authentication & middleware
 - [ ] Part 3: Create routes and controllers
 - [ ] Part 4: Test all endpoints with curl
 - [ ] Part 5: Error handling & validation
@@ -22,6 +23,7 @@ Building the complete REST API with database models, authentication, and 15+ end
 ## Part 1: Database Models Setup
 
 ### Step 1.1: Create Models Directory
+
 ```bash
 cd backend
 mkdir models
@@ -33,31 +35,37 @@ mkdir controllers
 Now create the 6 database models. I'll guide you through creating each file.
 
 ### Step 1.2: Create Poem Model
+
 **File:** `backend/models/Poem.js`
 
 This stores all poetry entries.
 
-### Step 1.3: Create Reader Model  
+### Step 1.3: Create Reader Model
+
 **File:** `backend/models/Reader.js`
 
 Stores reader profiles (no authentication needed - name and animal avatar only).
 
 ### Step 1.4: Create Rating Model
+
 **File:** `backend/models/Rating.js`
 
 Stores ratings and feedback for poems.
 
 ### Step 1.5: Create Theme Model
+
 **File:** `backend/models/Theme.js`
 
 Stores theme configurations.
 
 ### Step 1.6: Create Subscription Model
+
 **File:** `backend/models/Subscription.js`
 
 Stores email subscriptions for notifications.
 
 ### Step 1.7: Create Admin Model
+
 **File:** `backend/models/Admin.js`
 
 Admin user for the platform (username: NaKSh).
@@ -67,16 +75,19 @@ Admin user for the platform (username: NaKSh).
 ## Part 2: Authentication Setup
 
 ### Step 2.1: Create Auth Middleware
+
 **File:** `backend/middleware/auth.js`
 
 JWT verification for admin routes.
 
 ### Step 2.2: Create Error Handler Middleware
+
 **File:** `backend/middleware/errorHandler.js`
 
 Centralized error handling.
 
 ### Step 2.3: Create Validation Middleware
+
 **File:** `backend/middleware/validation.js`
 
 Input validation for all endpoints.
@@ -88,6 +99,7 @@ Input validation for all endpoints.
 ### API Endpoints to Create (15+)
 
 **Poems:**
+
 - `GET /api/poems` - Get all published poems
 - `GET /api/poems/:id` - Get single poem
 - `POST /api/poems` - Create poem (admin)
@@ -97,25 +109,30 @@ Input validation for all endpoints.
 - `GET /api/poems/:id/export/jpeg` - Export JPEG
 
 **Readers:**
+
 - `POST /api/readers` - Create reader profile
 - `GET /api/readers/:id` - Get reader profile
 - `PUT /api/readers/:id` - Update reader profile
 
 **Ratings & Feedback:**
+
 - `POST /api/ratings` - Submit rating
 - `GET /api/poems/:id/ratings` - Get poem ratings
 - `GET /api/poems/:id/feedback` - Get public feedback
 
 **Themes:**
+
 - `GET /api/themes` - Get all themes
 - `POST /api/themes` - Create theme (admin)
 - `PUT /api/themes/:id` - Update theme (admin)
 
 **Subscriptions:**
+
 - `POST /api/subscriptions` - Subscribe to emails
 - `DELETE /api/subscriptions/:token` - Unsubscribe
 
 **Admin:**
+
 - `POST /api/admin/login` - Admin login
 - `POST /api/admin/logout` - Admin logout
 - `GET /api/admin/dashboard` - Dashboard stats
@@ -127,22 +144,25 @@ Input validation for all endpoints.
 ### Quick Start Commands
 
 1. **Create all model files:**
+
    ```bash
    cd backend/models
    # Create: Poem.js, Reader.js, Rating.js, Theme.js, Subscription.js, Admin.js
    ```
 
 2. **Create middleware:**
+
    ```bash
    cd ../middleware
    # Create: auth.js, errorHandler.js, validation.js
    ```
 
 3. **Create routes and controllers:**
+
    ```bash
    cd ../routes
    # Create: poems.js, readers.js, ratings.js, themes.js, subscriptions.js, admin.js
-   
+
    cd ../controllers
    # Create: poemController.js, readerController.js, etc.
    ```
@@ -168,6 +188,7 @@ Before proceeding, make sure you have:
 ## What's Next
 
 After following the complete implementation in the sections below, you'll have:
+
 - ✅ 6 working database models
 - ✅ JWT authentication for admin
 - ✅ 15+ functional API endpoints
@@ -250,4 +271,3 @@ backend/
 Once you're ready, I'll guide you through creating each file with complete, working code!
 
 Ready to start? Say **"create models"** and I'll generate all the model files for you.
-

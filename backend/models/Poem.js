@@ -1,62 +1,62 @@
 import mongoose from 'mongoose'
 
 const poemSchema = new mongoose.Schema({
-  title: { 
-    type: String, 
+  title: {
+    type: String,
     required: [true, 'Poem title is required'],
     trim: true,
     index: true,
     minlength: [1, 'Title must be at least 1 character'],
     maxlength: [200, 'Title must be less than 200 characters']
   },
-  content: { 
-    type: String, 
+  content: {
+    type: String,
     required: [true, 'Poem content is required'],
     minlength: [10, 'Content must be at least 10 characters']
   },
-  author: { 
-    type: String, 
+  author: {
+    type: String,
     default: 'NaKSh',
     immutable: true
   },
-  writtenDate: { 
-    type: Date, 
+  writtenDate: {
+    type: Date,
     required: [true, 'Written date is required']
   },
-  uploadedDate: { 
-    type: Date, 
+  uploadedDate: {
+    type: Date,
     default: Date.now
   },
-  theme: { 
-    type: mongoose.Schema.Types.ObjectId, 
+  theme: {
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Theme',
     default: null
   },
-  status: { 
-    type: String, 
+  status: {
+    type: String,
     enum: {
       values: ['draft', 'published', 'archived'],
       message: 'Status must be draft, published, or archived'
     },
     default: 'draft'
   },
-  featured: { 
-    type: Boolean, 
+  featured: {
+    type: Boolean,
     default: false
   },
-  views: { 
-    type: Number, 
+  views: {
+    type: Number,
     default: 0,
     min: 0
   },
-  avgRating: { 
-    type: Number, 
+  avgRating: {
+    type: Number,
     default: 0,
     min: 0,
     max: 5
   },
-  totalRatings: { 
-    type: Number, 
+  totalRatings: {
+    type: Number,
     default: 0,
     min: 0
   },
@@ -68,7 +68,7 @@ const poemSchema = new mongoose.Schema({
     type: String,
     default: null
   }
-}, { 
+}, {
   timestamps: true,
   collection: 'poems'
 })

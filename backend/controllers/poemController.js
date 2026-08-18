@@ -6,18 +6,18 @@ import { validatePoemData } from '../middleware/validation.js'
 export const getAllPoems = async (req, res, next) => {
   try {
     const { sort = '-uploadedDate', page = 1, limit = 10, status = 'published' } = req.query
-    
+
     const skip = (parseInt(page) - 1) * parseInt(limit)
-    
+
     const poems = await Poem.find({ status })
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit))
       .populate('theme', 'name colors typography')
       .exec()
-    
+
     const total = await Poem.countDocuments({ status })
-    
+
     res.json({
       success: true,
       data: poems,
@@ -36,17 +36,17 @@ export const getAllPoems = async (req, res, next) => {
 export const getPoemById = async (req, res, next) => {
   try {
     const { id } = req.params
-    
+
     const poem = await Poem.findByIdAndUpdate(
       id,
       { $inc: { views: 1 } },
       { new: true }
     ).populate('theme')
-    
+
     if (!poem) {
       return res.status(404).json({ error: 'Poem not found' })
     }
-    
+
     res.json({
       success: true,
       data: poem
@@ -63,7 +63,7 @@ export const createPoem = async (req, res, next) => {
     if (validation.length > 0) {
       return res.status(400).json({ errors: validation })
     }
-    
+
     const poem = new Poem({
       title: req.body.title,
       content: req.body.content,
@@ -72,9 +72,9 @@ export const createPoem = async (req, res, next) => {
       status: req.body.status || 'draft',
       tags: req.body.tags || []
     })
-    
+
     await poem.save()
-    
+
     res.status(201).json({
       success: true,
       message: 'Poem created successfully',
@@ -90,24 +90,24 @@ export const updatePoem = async (req, res, next) => {
   try {
     const { id } = req.params
     const allowedFields = ['title', 'content', 'writtenDate', 'theme', 'status', 'featured', 'tags', 'coverImage']
-    
+
     const updates = {}
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field]
       }
     }
-    
+
     const poem = await Poem.findByIdAndUpdate(
       id,
       updates,
       { new: true, runValidators: true }
     )
-    
+
     if (!poem) {
       return res.status(404).json({ error: 'Poem not found' })
     }
-    
+
     res.json({
       success: true,
       message: 'Poem updated successfully',
@@ -122,16 +122,16 @@ export const updatePoem = async (req, res, next) => {
 export const deletePoem = async (req, res, next) => {
   try {
     const { id } = req.params
-    
+
     const poem = await Poem.findByIdAndDelete(id)
-    
+
     if (!poem) {
       return res.status(404).json({ error: 'Poem not found' })
     }
-    
+
     // Delete associated ratings
     await Rating.deleteMany({ poemId: id })
-    
+
     res.json({
       success: true,
       message: 'Poem deleted successfully'
@@ -145,15 +145,15 @@ export const deletePoem = async (req, res, next) => {
 export const getPoemStats = async (req, res, next) => {
   try {
     const { id } = req.params
-    
+
     const ratings = await Rating.find({ poemId: id })
     const publicFeedback = await Rating.find({ poemId: id, isPublic: true })
-    
+
     res.json({
       success: true,
       data: {
         totalRatings: ratings.length,
-        avgRating: ratings.length > 0 
+        avgRating: ratings.length > 0
           ? (ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length).toFixed(1)
           : 0,
         publicFeedback: publicFeedback.length,

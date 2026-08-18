@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 
 const readerSchema = new mongoose.Schema({
-  name: { 
-    type: String, 
+  name: {
+    type: String,
     required: [true, 'Name is required'],
     trim: true,
     minlength: [2, 'Name must be at least 2 characters'],
     maxlength: [50, 'Name must be less than 50 characters']
   },
-  email: { 
+  email: {
     type: String,
     unique: true,
     sparse: true,
@@ -23,8 +23,8 @@ const readerSchema = new mongoose.Schema({
     },
     default: 'cat'
   },
-  subscribed: { 
-    type: Boolean, 
+  subscribed: {
+    type: Boolean,
     default: false
   },
   subscriptionPreference: {
@@ -43,7 +43,7 @@ const readerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.Mixed,
     default: {}
   }
-}, { 
+}, {
   timestamps: true,
   collection: 'readers'
 })

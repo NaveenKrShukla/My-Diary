@@ -9,15 +9,15 @@ const setupAdmin = async () => {
     // Connect to MongoDB
     await mongoose.connect(process.env.MONGODB_URI)
     console.log('✅ Connected to MongoDB')
-    
+
     // Check if admin already exists
     const existingAdmin = await Admin.findOne({ username: 'NaKSh' })
-    
+
     if (existingAdmin) {
       console.log('⚠️  Admin user "NaKSh" already exists')
       console.log(`   Email: ${existingAdmin.email}`)
       console.log(`   Last login: ${existingAdmin.lastLogin || 'Never'}`)
-      
+
       // Update password if provided
       if (process.argv[2]) {
         existingAdmin.passwordHash = process.argv[2]
@@ -27,7 +27,7 @@ const setupAdmin = async () => {
     } else {
       // Create new admin
       const defaultPassword = process.argv[2] || 'NaKShPoetry123'
-      
+
       const admin = new Admin({
         username: 'NaKSh',
         passwordHash: defaultPassword,
@@ -39,13 +39,13 @@ const setupAdmin = async () => {
           emailNotificationsEnabled: true
         }
       })
-      
+
       await admin.save()
       console.log('✅ Admin user "NaKSh" created successfully!')
       console.log(`   Email: ${admin.email}`)
       console.log(`   Password: ${defaultPassword} (change immediately in production)`)
     }
-    
+
     // Create default themes
     const Theme = (await import('./models/Theme.js')).default
     const themes = [
@@ -74,7 +74,7 @@ const setupAdmin = async () => {
         }
       }
     ]
-    
+
     for (const themeData of themes) {
       const existingTheme = await Theme.findOne({ name: themeData.name })
       if (!existingTheme) {
@@ -83,14 +83,14 @@ const setupAdmin = async () => {
         console.log(`✅ Theme "${themeData.name}" created`)
       }
     }
-    
+
     console.log('\n🎉 Setup complete!')
     console.log('\nNextSteps:')
     console.log('1. Update .env with your MongoDB URI if not done yet')
     console.log('2. Start backend: npm run dev')
     console.log('3. Test API: curl http://localhost:5000/api/health')
     console.log('4. Login with admin: username="NaKSh", password=' + (process.argv[2] || 'NaKShPoetry123'))
-    
+
     await mongoose.disconnect()
   } catch (error) {
     console.error('❌ Setup error:', error.message)

@@ -1,6 +1,7 @@
 # Step 2: Backend API & Database Setup
 
 ## Overview
+
 Building the complete REST API with database models, authentication, and endpoints.
 
 **Duration:** 3-4 days | **Priority:** CRITICAL  
@@ -22,12 +23,14 @@ Building the complete REST API with database models, authentication, and endpoin
 ## Part 1: Create Database Models
 
 ### 1.1 Create Models Directory
+
 ```bash
 cd backend
 mkdir models
 ```
 
 We need to create 6 models:
+
 1. Poem
 2. Theme
 3. Reader
