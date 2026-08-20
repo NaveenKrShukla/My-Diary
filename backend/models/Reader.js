@@ -39,6 +39,14 @@ const readerSchema = new mongoose.Schema({
     type: Date,
     default: null
   },
+  lastReadPage: {
+    type: Number,
+    default: 1
+  },
+  lastReadPoem: {
+    type: String,
+    default: 'Cover Page'
+  },
   annotations: {
     type: mongoose.Schema.Types.Mixed,
     default: {}

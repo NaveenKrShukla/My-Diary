@@ -57,7 +57,7 @@ export const getReaderById = async (req, res, next) => {
 export const updateReader = async (req, res, next) => {
   try {
     const { id } = req.params
-    const allowedFields = ['name', 'email', 'profilePicture', 'subscribed', 'subscriptionPreference', 'annotations']
+    const allowedFields = ['name', 'email', 'profilePicture', 'subscribed', 'subscriptionPreference', 'annotations', 'lastReadPage', 'lastReadPoem']
 
     const updates = {}
     for (const field of allowedFields) {
@@ -132,10 +132,24 @@ export const saveReaderAnnotations = async (req, res, next) => {
   }
 }
 
+// Get all readers (admin only)
+export const getAllReaders = async (req, res, next) => {
+  try {
+    const readers = await Reader.find().sort('-updatedAt')
+    res.json({
+      success: true,
+      data: readers
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 export default {
   createReader,
   getReaderById,
   updateReader,
   getReaderAnnotations,
-  saveReaderAnnotations
+  saveReaderAnnotations,
+  getAllReaders
 }

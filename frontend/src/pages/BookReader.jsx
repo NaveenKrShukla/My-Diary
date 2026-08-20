@@ -55,14 +55,26 @@ export default function BookReader() {
         setPoems(data);
 
         // Check for local reader profile
-        const savedReader = localStorage.getItem('local_reader');
-        if (savedReader) {
-          const parsed = JSON.parse(savedReader);
-          setReader(parsed);
+        const savedReaderData = localStorage.getItem('local_reader');
+        if (savedReaderData) {
+          try {
+            const parsed = JSON.parse(savedReaderData);
+            // Support both old format (direct profile) and new format (nested profile with expiry)
+            const profile = parsed.profile || parsed;
+            const savedAt = parsed.savedAt || Date.now();
+            const thirtyMinutes = 30 * 60 * 1000;
 
-          // Load annotations for reader
-          const annos = await getAnnotations(parsed._id);
-          setAnnotations(annos || {});
+            if (Date.now() - savedAt < thirtyMinutes) {
+              setReader(profile);
+              // Load annotations for reader
+              const annos = await getAnnotations(profile._id);
+              setAnnotations(annos || {});
+            } else {
+              localStorage.removeItem('local_reader');
+            }
+          } catch (e) {
+            localStorage.removeItem('local_reader');
+          }
         }
       } catch (err) {
         setError('Failed to open the diary.');
@@ -73,6 +85,52 @@ export default function BookReader() {
     }
     initReaderAndPoems();
   }, []);
+
+  // Track and save reader progress (debounced)
+  useEffect(() => {
+    if (!reader || !poems || poems.length === 0) return;
+
+    // Resolve what they are reading based on currentSheet
+    let currentReadingTitle = 'Cover Page';
+    if (isMobile) {
+      // Mobile single page layout index mapping
+      const currentPageIndex = Math.min(currentSheet, poems.length + 2); // Max pages limit
+      if (currentPageIndex === 1) {
+        currentReadingTitle = 'Index';
+      } else if (currentPageIndex >= 2 && currentPageIndex < 2 + poems.length) {
+        currentReadingTitle = poems[currentPageIndex - 2]?.title || 'Poem';
+      } else if (currentPageIndex >= 2 + poems.length) {
+        currentReadingTitle = 'Back Cover';
+      }
+    } else {
+      // Desktop dual page layout index mapping
+      if (currentSheet === 0) {
+        currentReadingTitle = 'Cover & Index';
+      } else {
+        const leftPoemIdx = (currentSheet - 1) * 2;
+        const rightPoemIdx = leftPoemIdx + 1;
+        const leftTitle = poems[leftPoemIdx]?.title;
+        const rightTitle = poems[rightPoemIdx]?.title;
+
+        if (leftTitle && rightTitle) {
+          currentReadingTitle = `${leftTitle} / ${rightTitle}`;
+        } else if (leftTitle) {
+          currentReadingTitle = `${leftTitle} / Back Cover`;
+        } else {
+          currentReadingTitle = 'Back Cover';
+        }
+      }
+    }
+
+    const timer = setTimeout(() => {
+      updateReader(reader._id, {
+        lastReadPage: isMobile ? currentSheet + 1 : (currentSheet * 2) + 1,
+        lastReadPoem: currentReadingTitle
+      }).catch(err => console.warn('Could not update reading progress:', err.message));
+    }, 2000); // 2s debounce
+
+    return () => clearTimeout(timer);
+  }, [currentSheet, reader, poems, isMobile]);
 
   // Monitor resize for layout transitions
   useEffect(() => {
@@ -94,6 +152,12 @@ export default function BookReader() {
       if (created) {
         setReader(created);
         toast.success(`Welcome, ${created.name}!`);
+        // Store in localStorage with 30-minute expiration format
+        const readerDataWithExpiry = {
+          profile: created,
+          savedAt: Date.now()
+        };
+        localStorage.setItem('local_reader', JSON.stringify(readerDataWithExpiry));
         // Load annotations (should be empty for new profile)
         setAnnotations({});
       }
@@ -134,7 +198,11 @@ export default function BookReader() {
       });
       if (updated) {
         setReader(updated);
-        localStorage.setItem('local_reader', JSON.stringify(updated));
+        const readerDataWithExpiry = {
+          profile: updated,
+          savedAt: Date.now() // Reset timer on update
+        };
+        localStorage.setItem('local_reader', JSON.stringify(readerDataWithExpiry));
         setIsEditingProfile(false);
         setShowProfileMenu(false);
         toast.success('Profile updated.');

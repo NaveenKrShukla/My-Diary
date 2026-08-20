@@ -11,7 +11,8 @@ import {
   getBackendThemes,
   getPoemRatings,
   deleteRating,
-  getSubscribersList
+  getSubscribersList,
+  getReadersList
 } from '../utils/api';
 import { BUILT_IN_THEMES } from '../utils/ThemeManager';
 import toast from 'react-hot-toast';
@@ -43,6 +44,7 @@ export default function AdminDashboard() {
   const [themes, setThemes] = useState([]);
   const [allComments, setAllComments] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
+  const [readers, setReaders] = useState([]);
   const [settings, setSettings] = useState({
     defaultTheme: 'dark',
     siteTitle: 'My Diary',
@@ -94,6 +96,10 @@ export default function AdminDashboard() {
         // Load newsletter subscribers
         const subsList = await getSubscribersList();
         setSubscribers(subsList);
+
+        // Load reader profiles and reading progress
+        const readersList = await getReadersList();
+        setReaders(readersList);
 
         // Gather comments across all poems for moderation tab
         const commentsAccumulator = [];
@@ -509,6 +515,42 @@ export default function AdminDashboard() {
                           <span className={`status-badge ${s.isActive ? 'published' : 'draft'}`}>
                             {s.isActive ? 'Active' : 'Unsubscribed'}
                           </span>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <div className="section-header" style={{ marginTop: '2.5rem', marginBottom: '1rem' }}>
+              <h3 className="section-title">Live User Reading Activity</h3>
+            </div>
+            <div className="table-wrapper glass">
+              <table className="poems-table">
+                <thead>
+                  <tr>
+                    <th>Reader Profile</th>
+                    <th>Last Active</th>
+                    <th>Last Read Page</th>
+                    <th>Current Reading Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {!Array.isArray(readers) || readers.length === 0 ? (
+                    <tr>
+                      <td colSpan="4" className="empty-table-row">No reading activity recorded yet.</td>
+                    </tr>
+                  ) : (
+                    readers.map((r) => (
+                      <tr key={r._id}>
+                        <td style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ fontSize: '1.25rem' }}>{ANIMAL_EMOJIS[r.profilePicture] || '🐱'}</span>
+                          <span>{r.name}</span>
+                        </td>
+                        <td>{new Date(r.updatedAt || r.createdAt).toLocaleString()}</td>
+                        <td>Page {r.lastReadPage || 1}</td>
+                        <td style={{ fontStyle: 'italic', color: 'var(--color-text-secondary)' }}>
+                          {r.lastReadPoem || 'Cover Page'}
                         </td>
                       </tr>
                     ))

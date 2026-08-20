@@ -534,6 +534,21 @@ export async function getAdminSettings() {
   };
 }
 
+export async function getReadersList() {
+  try {
+    const token = localStorage.getItem('admin_token');
+    const response = await axios.get(`${API_BASE_URL}/api/readers`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (response.data && response.data.success) {
+      return response.data.data;
+    }
+  } catch (error) {
+    console.warn('Backend getReadersList failed:', error.message);
+  }
+  return [];
+}
+
 export async function updateAdminSettings(settings) {
   try {
     const token = localStorage.getItem('admin_token');

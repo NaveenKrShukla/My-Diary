@@ -473,7 +473,7 @@
 .mobile-book-container {
   width: 100%;
   max-width: 480px;
-  padding: 60px 8px 8px 8px; /* Top padding clears the floating toolbar */
+  padding: 8px; /* Standard padding */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -517,6 +517,8 @@
 
 .mobile-page-content {
   width: 100%;
+  height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -526,6 +528,7 @@
 .mobile-page-content.cover-page {
   text-align: center;
   justify-content: center;
+  height: 100%;
 }
 
 .mobile-page-content.cover-page .cover-icon {

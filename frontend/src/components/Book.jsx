@@ -33,7 +33,7 @@ export default function Book({
   const handleNext = () => {
     if (isMobile) {
       if (mobilePageDir) return; // Ignore multiple double clicks during animation
-      const maxPages = 1 + totalPoems + 1;
+      const maxPages = totalPoems + 3; // Cover + TOC + Poems + Back Cover (Total index size)
       if (currentSheet < maxPages - 1) {
         setMobilePageDir('next');
         setTimeout(() => {
