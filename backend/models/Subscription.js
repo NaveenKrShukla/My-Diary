@@ -41,7 +41,4 @@ const subscriptionSchema = new mongoose.Schema({
   collection: 'subscriptions'
 })
 
-subscriptionSchema.index({ email: 1 })
-subscriptionSchema.index({ unsubscribeToken: 1 })
-
 export default mongoose.model('Subscription', subscriptionSchema)

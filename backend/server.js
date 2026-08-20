@@ -29,14 +29,15 @@ app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ limit: '10mb', extended: true }))
 
 // Database Connection
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI, {
+const dbUri = process.env.MONGODB_URI || process.env.MONGO_URI
+if (dbUri) {
+  mongoose.connect(dbUri, {
     bufferCommands: false // Fail fast if MongoDB is offline instead of buffering queries
   })
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB connection error:', err))
 } else {
-  console.log('⚠️  MONGODB_URI not set in .env - running without database')
+  console.log('⚠️  MONGODB_URI or MONGO_URI not set in environment - running without database')
 }
 
 // Health check route

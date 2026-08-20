@@ -48,6 +48,4 @@ const readerSchema = new mongoose.Schema({
   collection: 'readers'
 })
 
-readerSchema.index({ email: 1 })
-
 export default mongoose.model('Reader', readerSchema)
