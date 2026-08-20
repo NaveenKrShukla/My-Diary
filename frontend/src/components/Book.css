@@ -473,7 +473,7 @@
 .mobile-book-container {
   width: 100%;
   max-width: 480px;
-  padding: 8px; /* Reduced padding */
+  padding: 60px 8px 8px 8px; /* Top padding clears the floating toolbar */
   display: flex;
   flex-direction: column;
   align-items: center;

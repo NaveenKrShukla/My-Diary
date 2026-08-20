@@ -240,12 +240,14 @@
   .annotation-toolbar {
     flex-direction: row;
     position: fixed;
-    bottom: var(--spacing-md);
+    top: 72px; /* Float below the header */
+    bottom: auto;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 92%;
     justify-content: space-around;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    z-index: 999; /* Ensure it stays on top of book sheets */
   }
   .toolbar-section {
     flex-direction: row;

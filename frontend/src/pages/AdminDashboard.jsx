@@ -57,7 +57,7 @@ export default function AdminDashboard() {
   const [poemContent, setPoemContent] = useState('');
   const [poemDate, setPoemDate] = useState('');
   const [poemTheme, setPoemTheme] = useState('');
-  const [poemStatus, setPoemStatus] = useState('draft');
+  const [poemStatus, setPoemStatus] = useState('published');
   const [poemFeatured, setPoemFeatured] = useState(false);
   const [poemTags, setPoemTags] = useState('');
 
@@ -135,7 +135,7 @@ export default function AdminDashboard() {
     setPoemContent('');
     setPoemDate(new Date().toISOString().split('T')[0]);
     setPoemTheme(themes[0]?._id || '');
-    setPoemStatus('draft');
+    setPoemStatus('published');
     setPoemFeatured(false);
     setPoemTags('');
     setShowEditor(true);
