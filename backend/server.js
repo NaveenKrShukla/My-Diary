@@ -67,7 +67,7 @@ if (dbUri) {
               content: "The autumn leaves dance in the air,\nA quiet sigh from everywhere.\nIn shadows deep, the secrets keep,\nWhile the silent forest falls asleep.",
               author: "NaKSh",
               tags: ["nature", "serene"],
-              isPublic: true,
+              status: "published", // Explicitly set status to published for client retrieval
               writtenDate: new Date()
             },
             {
@@ -75,11 +75,17 @@ if (dbUri) {
               content: "In the quiet corners of the mind,\nAre words we left behind.\nLike pebbles cast into the deep,\nThe silent promises we keep.",
               author: "NaKSh",
               tags: ["reflective", "mind"],
-              isPublic: true,
+              status: "published", // Explicitly set status to published for client retrieval
               writtenDate: new Date()
             }
           ])
-          console.log('✅ Auto-populated database with default poems')
+          console.log('✅ Auto-populated database with default published poems')
+        } else {
+          // If there are existing draft poems from previous auto-initialization, upgrade them to published!
+          const result = await Poem.updateMany({ status: 'draft' }, { status: 'published' })
+          if (result.modifiedCount > 0) {
+            console.log(`✅ Upgraded ${result.modifiedCount} existing draft poems to published status`)
+          }
         }
       } catch (err) {
         console.error('❌ Database auto-initialization failed:', err.message)
