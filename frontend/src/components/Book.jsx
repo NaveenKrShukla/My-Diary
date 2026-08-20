@@ -76,6 +76,13 @@ export default function Book({
 
   const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return;
+
+    // Prevent swipe-to-page-flip conflicts when active tools need drag actions
+    if (activeTool === 'highlight' || activeTool === 'pen') {
+      touchStartX.current = null;
+      return;
+    }
+
     const touchEndX = e.changedTouches[0].clientX;
     const diffX = touchStartX.current - touchEndX;
 
@@ -302,6 +309,10 @@ export default function Book({
       <div 
         className="poem-lines-container"
         onMouseUp={() => handleTextSelection(poem._id)}
+        onTouchEnd={() => {
+          // Captures selections when the user finishes dragging their finger on mobile
+          setTimeout(() => handleTextSelection(poem._id), 100);
+        }}
         role="document"
         aria-label={`Poetry text of ${poem.title}`}
       >

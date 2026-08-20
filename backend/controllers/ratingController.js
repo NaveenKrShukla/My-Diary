@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import Rating from '../models/Rating.js'
 import Poem from '../models/Poem.js'
 import { validateRating } from '../middleware/validation.js'
@@ -62,6 +63,19 @@ export const getPoemRatings = async (req, res, next) => {
   try {
     const { poemId } = req.params
 
+    if (!mongoose.Types.ObjectId.isValid(poemId)) {
+      return res.json({
+        success: true,
+        data: {
+          ratings: [],
+          stats: {
+            total: 0,
+            average: 0
+          }
+        }
+      })
+    }
+
     const ratings = await Rating.find({ poemId })
       .populate('readerId', 'name profilePicture')
       .sort('-createdAt')
@@ -89,6 +103,13 @@ export const getPoemRatings = async (req, res, next) => {
 export const getPoemFeedback = async (req, res, next) => {
   try {
     const { poemId } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(poemId)) {
+      return res.json({
+        success: true,
+        data: []
+      })
+    }
 
     const feedback = await Rating.find({ poemId, isPublic: true, feedback: { $ne: '' } })
       .populate('readerId', 'name profilePicture')

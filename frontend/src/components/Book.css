@@ -473,21 +473,23 @@
 .mobile-book-container {
   width: 100%;
   max-width: 480px;
-  padding: var(--spacing-md);
+  padding: 8px; /* Reduced padding */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
+  min-height: calc(100vh - 100px);
 }
 
 .mobile-book-card {
   width: 100%;
-  min-height: 480px;
-  padding: var(--spacing-lg);
+  min-height: calc(100vh - 220px); /* Tall dynamic viewport cards */
+  max-height: 720px;
+  padding: var(--spacing-md) var(--spacing-sm);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Start from top so text fills up space */
   align-items: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
@@ -547,9 +549,17 @@
 }
 
 .mobile-page-content.poem-page .poem-content-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: var(--spacing-sm) 0;
+  font-size: 1.12rem; /* Enhanced text size for readability on phones */
+  line-height: 1.7;
+  margin: 6px 0;
+  max-height: calc(100vh - 340px); /* Tall viewport content area displaying 10+ lines */
+  min-height: 260px;
+  overflow-y: auto;
+  width: 100%;
+  scrollbar-width: none; /* Hide scrollbar in mobile for organic look */
+}
+.mobile-page-content.poem-page .poem-content-text::-webkit-scrollbar {
+  display: none;
 }
 
 .mobile-page-content.back-cover-page {
