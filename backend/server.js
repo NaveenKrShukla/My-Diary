@@ -45,7 +45,7 @@ if (dbUri) {
           const admin = new Admin({
             username: 'NaKSh',
             passwordHash: 'NaKShPoetry123',
-            email: process.env.ADMIN_EMAIL || 'admin@mydiary.local',
+            email: process.env.ADMIN_EMAIL || 'admin@mydiary.com',
             settings: {
               defaultTheme: 'dark',
               siteTitle: 'My Diary',
