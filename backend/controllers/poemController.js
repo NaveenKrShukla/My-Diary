@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import Poem from '../models/Poem.js'
 import Rating from '../models/Rating.js'
 import { validatePoemData } from '../middleware/validation.js'
@@ -68,7 +69,7 @@ export const createPoem = async (req, res, next) => {
       title: req.body.title,
       content: req.body.content,
       writtenDate: new Date(req.body.writtenDate),
-      theme: req.body.theme || null,
+      theme: (req.body.theme && mongoose.Types.ObjectId.isValid(req.body.theme)) ? req.body.theme : null,
       status: req.body.status || 'draft',
       tags: req.body.tags || []
     })
@@ -96,6 +97,10 @@ export const updatePoem = async (req, res, next) => {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field]
       }
+    }
+
+    if (updates.theme !== undefined && updates.theme !== null && !mongoose.Types.ObjectId.isValid(updates.theme)) {
+      updates.theme = null;
     }
 
     const poem = await Poem.findByIdAndUpdate(
