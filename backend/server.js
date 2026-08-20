@@ -34,7 +34,57 @@ if (dbUri) {
   mongoose.connect(dbUri, {
     bufferCommands: false // Fail fast if MongoDB is offline instead of buffering queries
   })
-    .then(() => console.log('✅ MongoDB connected'))
+    .then(async () => {
+      console.log('✅ MongoDB connected')
+      
+      // Auto-initialize admin user if database is empty
+      try {
+        const Admin = (await import('./models/Admin.js')).default
+        const adminExists = await Admin.findOne({ username: 'NaKSh' })
+        if (!adminExists) {
+          const admin = new Admin({
+            username: 'NaKSh',
+            passwordHash: 'NaKShPoetry123',
+            email: process.env.ADMIN_EMAIL || 'admin@mydiary.local',
+            settings: {
+              defaultTheme: 'dark',
+              siteTitle: 'My Diary',
+              siteDescription: 'A premium poetry sharing platform by NaKSh',
+              emailNotificationsEnabled: true
+            }
+          })
+          await admin.save()
+          console.log('✅ Auto-initialized default admin user "NaKSh"')
+        }
+
+        // Auto-populate poems if database is empty
+        const Poem = (await import('./models/Poem.js')).default
+        const poemCount = await Poem.countDocuments()
+        if (poemCount === 0) {
+          await Poem.create([
+            {
+              title: "Whispers of the Wind",
+              content: "The autumn leaves dance in the air,\nA quiet sigh from everywhere.\nIn shadows deep, the secrets keep,\nWhile the silent forest falls asleep.",
+              author: "NaKSh",
+              tags: ["nature", "serene"],
+              isPublic: true,
+              writtenDate: new Date()
+            },
+            {
+              title: "Echoes of Silence",
+              content: "In the quiet corners of the mind,\nAre words we left behind.\nLike pebbles cast into the deep,\nThe silent promises we keep.",
+              author: "NaKSh",
+              tags: ["reflective", "mind"],
+              isPublic: true,
+              writtenDate: new Date()
+            }
+          ])
+          console.log('✅ Auto-populated database with default poems')
+        }
+      } catch (err) {
+        console.error('❌ Database auto-initialization failed:', err.message)
+      }
+    })
     .catch(err => console.error('❌ MongoDB connection error:', err))
 } else {
   console.log('⚠️  MONGODB_URI or MONGO_URI not set in environment - running without database')
