@@ -3,6 +3,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import errorHandler from './middleware/errorHandler.js'
 
 // Route imports
@@ -28,7 +30,9 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }))
 
 // Database Connection
 if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI)
+  mongoose.connect(process.env.MONGODB_URI, {
+    bufferCommands: false // Fail fast if MongoDB is offline instead of buffering queries
+  })
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB connection error:', err))
 } else {
@@ -52,7 +56,23 @@ app.use('/api/themes', themesRouter)
 app.use('/api/subscriptions', subscriptionsRouter)
 app.use('/api/admin', adminRouter)
 
-// 404 handler
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Serve static frontend files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')))
+  
+  // Anything that doesn't match an API route should serve index.html
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/')) {
+      return next()
+    }
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'))
+  })
+}
+
+// 404 handler for API routes
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' })
 })

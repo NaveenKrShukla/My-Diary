@@ -1,0 +1,11 @@
+{
+  "name": "my-diary-monolithic",
+  "version": "1.0.0",
+  "description": "Monolithic hosting wrapper for My Diary",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js"
+  }
+}
