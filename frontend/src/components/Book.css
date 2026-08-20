@@ -479,6 +479,7 @@
   align-items: center;
   gap: var(--spacing-md);
   min-height: calc(100vh - 100px);
+  perspective: 1200px; /* Enable 3D perspective depth */
 }
 
 .mobile-book-card {
@@ -492,6 +493,26 @@
   justify-content: flex-start; /* Start from top so text fills up space */
   align-items: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  
+  /* 3D Page flip configurations */
+  transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1), 
+              opacity 0.4s ease-in-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Page flip forward animation (next page) */
+.mobile-book-card.turning-next {
+  transform-origin: left center;
+  transform: rotateY(-90deg) scale(0.95);
+  opacity: 0;
+}
+
+/* Page flip backward animation (prev page) */
+.mobile-book-card.turning-prev {
+  transform-origin: right center;
+  transform: rotateY(90deg) scale(0.95);
+  opacity: 0;
 }
 
 .mobile-page-content {

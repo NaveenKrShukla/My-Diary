@@ -25,15 +25,21 @@ export default function Book({
   const [activeNoteBubble, setActiveNoteBubble] = useState(null); // { poemId, lineIndex }
   const [activeReviewPoem, setActiveReviewPoem] = useState(null); // Poem object for feedback modal
   const [activeDownloadDropdown, setActiveDownloadDropdown] = useState(null); // poemId
+  const [mobilePageDir, setMobilePageDir] = useState(null); // 'next' | 'prev' | null
 
   // Touch swiping
   const touchStartX = useRef(null);
 
   const handleNext = () => {
     if (isMobile) {
+      if (mobilePageDir) return; // Ignore multiple double clicks during animation
       const maxPages = 1 + totalPoems + 1;
       if (currentSheet < maxPages - 1) {
-        setCurrentSheet(currentSheet + 1);
+        setMobilePageDir('next');
+        setTimeout(() => {
+          setCurrentSheet(currentSheet + 1);
+          setMobilePageDir(null);
+        }, 400); // 400ms transition time
       }
     } else {
       if (currentSheet < totalSheets - 1) {
@@ -47,8 +53,19 @@ export default function Book({
   };
 
   const handlePrev = () => {
-    if (currentSheet > 0) {
-      setCurrentSheet(currentSheet - 1);
+    if (isMobile) {
+      if (mobilePageDir) return; // Ignore multiple double clicks during animation
+      if (currentSheet > 0) {
+        setMobilePageDir('prev');
+        setTimeout(() => {
+          setCurrentSheet(currentSheet - 1);
+          setMobilePageDir(null);
+        }, 400); // 400ms transition time
+      }
+    } else {
+      if (currentSheet > 0) {
+        setCurrentSheet(currentSheet - 1);
+      }
     }
     // Close editors/bubbles/menus on navigation
     setSelectedLineForNote(null);
@@ -516,7 +533,7 @@ export default function Book({
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="mobile-book-card glass">
+        <div className={`mobile-book-card glass ${mobilePageDir ? `turning-${mobilePageDir}` : ''}`}>
           {mobilePages[currentPageIndex].content}
         </div>
         <div className="book-controls" role="navigation" aria-label="Mobile reading controls">
