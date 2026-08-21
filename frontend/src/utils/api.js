@@ -180,12 +180,28 @@ function getCustomThemesSafe() {
 
 export async function getPoems() {
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/poems?status=published`);
+    const response = await axios.get(`${API_BASE_URL}/api/poems?status=published&limit=1000`);
     if (response.data && response.data.success && Array.isArray(response.data.data) && response.data.data.length > 0) {
       return response.data.data;
     }
   } catch (error) {
     console.warn('Backend API not reachable. Using local poems:', error.message);
+  }
+
+  return initLocalPoems();
+}
+
+export async function getAdminPoems() {
+  try {
+    const token = localStorage.getItem('admin_token');
+    const response = await axios.get(`${API_BASE_URL}/api/poems?status=all&limit=1000`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (response.data && response.data.success && Array.isArray(response.data.data)) {
+      return response.data.data;
+    }
+  } catch (error) {
+    console.warn('Backend getAdminPoems failed. Using local poems:', error.message);
   }
 
   return initLocalPoems();

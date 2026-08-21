@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  getPoems,
+  getAdminPoems,
   getDashboardStats,
   getAdminSettings,
   updateAdminSettings,
@@ -65,6 +65,10 @@ export default function AdminDashboard() {
 
   // Search filter
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const poemsPerPage = 10;
 
   // 1. Verify Authentication & Load Dashboard Data
   useEffect(() => {
@@ -82,7 +86,7 @@ export default function AdminDashboard() {
         setStats(statsData);
 
         // Load poems
-        const poemsList = await getPoems();
+        const poemsList = await getAdminPoems();
         setPoems(poemsList);
 
         // Load themes
@@ -257,6 +261,12 @@ export default function AdminDashboard() {
     p.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Pagination selectors
+  const totalPages = Math.ceil(filteredPoems.length / poemsPerPage);
+  const indexOfLastPoem = currentPage * poemsPerPage;
+  const indexOfFirstPoem = indexOfLastPoem - poemsPerPage;
+  const paginatedPoems = filteredPoems.slice(indexOfFirstPoem, indexOfLastPoem);
+
   if (loading) {
     return (
       <div className="reader-loading">
@@ -384,7 +394,7 @@ export default function AdminDashboard() {
                 type="text"
                 placeholder="Search poems by title or verses..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                 className="search-input-field"
               />
               <button className="btn btn-primary" onClick={handleOpenCreate}>
@@ -405,12 +415,12 @@ export default function AdminDashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredPoems.length === 0 ? (
+                  {paginatedPoems.length === 0 ? (
                     <tr>
                       <td colSpan="6" className="empty-table-row">No poems found.</td>
                     </tr>
                   ) : (
-                    filteredPoems.map((p) => {
+                    paginatedPoems.map((p) => {
                       return (
                         <tr key={p._id}>
                           <td className="poem-table-title font-headings">
@@ -440,6 +450,30 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
             </div>
+
+            {totalPages > 1 && (
+              <div className="admin-pagination-row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1.5rem', marginTop: '1.5rem' }}>
+                <button 
+                  className="btn" 
+                  disabled={currentPage === 1} 
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  style={{ opacity: currentPage === 1 ? 0.4 : 1, padding: '0.4rem 1rem', border: '1px solid rgba(255, 255, 255, 0.1)', cursor: 'pointer' }}
+                >
+                  ← Previous
+                </button>
+                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>
+                  Page <strong>{currentPage}</strong> of {totalPages}
+                </span>
+                <button 
+                  className="btn" 
+                  disabled={currentPage === totalPages} 
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  style={{ opacity: currentPage === totalPages ? 0.4 : 1, padding: '0.4rem 1rem', border: '1px solid rgba(255, 255, 255, 0.1)', cursor: 'pointer' }}
+                >
+                  Next →
+                </button>
+              </div>
+            )}
           </div>
         )}
 

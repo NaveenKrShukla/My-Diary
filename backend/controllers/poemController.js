@@ -6,18 +6,24 @@ import { validatePoemData } from '../middleware/validation.js'
 // Get all published poems (with sorting and filtering)
 export const getAllPoems = async (req, res, next) => {
   try {
-    const { sort = 'writtenDate', page = 1, limit = 10, status = 'published' } = req.query
+    const { sort = 'writtenDate', page = 1, limit = 1000, status } = req.query
 
     const skip = (parseInt(page) - 1) * parseInt(limit)
+    const query = {}
+    if (status && status !== 'all') {
+      query.status = status
+    } else if (!status) {
+      query.status = 'published'
+    }
 
-    const poems = await Poem.find({ status })
+    const poems = await Poem.find(query)
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit))
       .populate('theme', 'name colors typography')
       .exec()
 
-    const total = await Poem.countDocuments({ status })
+    const total = await Poem.countDocuments(query)
 
     res.json({
       success: true,
