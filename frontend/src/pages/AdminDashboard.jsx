@@ -255,11 +255,13 @@ export default function AdminDashboard() {
     }
   };
 
-  // Filter poems for search query
-  const filteredPoems = (Array.isArray(poems) ? poems : []).filter(p =>
-    p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.content.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter and sort poems chronologically by written date
+  const filteredPoems = (Array.isArray(poems) ? poems : [])
+    .filter(p =>
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.content.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => new Date(a.writtenDate) - new Date(b.writtenDate));
 
   // Pagination selectors
   const totalPages = Math.ceil(filteredPoems.length / poemsPerPage);

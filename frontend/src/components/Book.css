@@ -211,6 +211,10 @@
   flex-direction: column;
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
+  max-height: 360px; /* Limits height to fit inside the book sheet */
+  overflow-y: auto;
+  padding-right: 5px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .toc-item-btn {
@@ -557,9 +561,12 @@
 }
 
 .mobile-page-content.toc-page .toc-list {
-  max-height: 350px;
+  max-height: calc(100vh - 330px); /* Adjust dynamically to fill available page height */
+  min-height: 250px;
   overflow-y: auto;
   padding-right: 5px;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
 .mobile-page-content.poem-page {

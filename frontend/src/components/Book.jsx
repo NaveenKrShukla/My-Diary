@@ -103,9 +103,9 @@ export default function Book({
     const touchEndX = e.changedTouches[0].clientX;
     const diffX = touchStartX.current - touchEndX;
 
-    if (diffX > 50) {
+    if (diffX > 110) {
       handleNext();
-    } else if (diffX < -50) {
+    } else if (diffX < -110) {
       handlePrev();
     }
     touchStartX.current = null;
