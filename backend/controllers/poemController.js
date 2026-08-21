@@ -6,7 +6,7 @@ import { validatePoemData } from '../middleware/validation.js'
 // Get all published poems (with sorting and filtering)
 export const getAllPoems = async (req, res, next) => {
   try {
-    const { sort = '-uploadedDate', page = 1, limit = 10, status = 'published' } = req.query
+    const { sort = 'writtenDate', page = 1, limit = 10, status = 'published' } = req.query
 
     const skip = (parseInt(page) - 1) * parseInt(limit)
 
