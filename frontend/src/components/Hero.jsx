@@ -129,7 +129,7 @@ export default function Hero() {
           </h1>
 
           <p ref={subtitleRef} className="hero-subtitle">
-            Welcome to my private collection of verses, thoughts, and reflections. Explore my writing in an interactive 3D reader, customize themes to match your mood, highlight your favorite lines, and export beautiful poetry cards to share.
+            Har kavita ek ehsaas hai... Har lafz ek kahani. Kabhi khud ko, toh kabhi zindagi ko samajhne ki ek chhoti si koshish. Ab ye meri nahi... hamari hai.
           </p>
 
           {/* CTA Buttons */}
